@@ -1,4 +1,4 @@
-@extends('app')
+	@extends('app')
 
 @section('header')
 
@@ -49,15 +49,18 @@ a {
 						<td>{{$key->kondisi}}</td>
 						<td>{{substr(strip_tags($key->desc),0,100)}}&nbsp;...</td>
 
-						<td align="center"><a href="{{url('barang/edit/'.$key->id)}}">
-						<button style="width: 100%;" class="btn btn-primary">Edit</button>
+						<div class="btn-group" role="group">
+						<td align="center">
+						<a href="{{url('barang/edit/'.$key->id)}}">
+						<button  class="btn btn-primary glyphicon glyphicon-edit"></button>
+						</a>
+						<a href="{{url('barang/delete/'.$key->id)}}"
+						onclick="return confirm('Are you sure to delete {{$key->judul}}?')">
+						<button class="btn btn-danger glyphicon glyphicon-trash"></button>
 						</a>
 						</td>
-
-						<td align="center"><a href="{{url('barang/delete/'.$key->id)}}"
-						onclick="return confirm('Are you sure to delete {{$key->judul}}?')">
-						<button style="width: 100%;" class="btn btn-danger">Delete</button>
-						</a>
+						</div>
+						
 
 						</tr>
 

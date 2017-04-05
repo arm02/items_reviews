@@ -3,6 +3,7 @@
 @section('header')
 
 <title>Laravel &raquo; Home</title>
+<link rel="icon" href="{!! ('images/icon.png') !!}"/>
 <style type="text/css">
 .www {
   height: 50%;
@@ -79,6 +80,7 @@
         <hr>
         </div>
         <img class="www" style="height: 150px;" src="{{url('images/'.$data->photo_header)}}">
+        
         <div class="caption">
         <div class="rw-ui-container" align="right"></div>
         <h6><b>{{ $data->nama_barang }}</h6></b>
