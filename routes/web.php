@@ -12,36 +12,60 @@
 */
 
 
-Route::get('check.emails',function()
+
+Route::auth();
+
+Route::get('/images/{filename}', function ($filename)
 {
-	return view('emails.hello');
+	$path = storage_path('sampul') . '/' . $filename;
+
+	$file = File::get($path);
+	$type = File::mimeType($path);
+
+	$response = Response::make($file);
+	$response->header("Content-Type", $type);
+
+	return $response;
 });
+
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('send',function()
+Route::get('/home', 'HomeController@index');
+Route::get('/search', 'DetailController@search');
+Route::get('/barang/list', 'BarangController@index');
+Route::get('/barang/beranda' , 'DetailController@all');
+Route::get('{id}','DetailController@detail');
+
+Route::get('/logout',function ()
 {
-
-	$data['header_banner'] = 'http://cdn.akamai.steamstatic.com/steam/apps/570/header.jpg?t=1482257283';
-	$data['header_image'] = 'http://cdn.akamai.steamstatic.com/steam/apps/570/header.jpg?t=1482257283';
-	$data['text_paragraph'] = 'AKU MANUSIA BIASA';
-	$data['link_to'] = 'facebook.com/adrmilano';
-	$data['link_text'] = 'HACKER';
-
-
-	Mail::send('emails.hello',$data,function($m)
-			{
-				$m->from('arm.adrian@outlook.com','Adrian Milano');
-				$m->to('ariefsetya@live.com');
-				$m->subject('Hello from World '.gethostname().'Adrian Milano (02)');
-				$m->cc('arm.adrian@artivisi.com');
-				$m->bcc('email@mailiator.com');
-				$m->replyTo('arm.adrian02@gmail.com');
-
-				//$m->attach(storage_path(gambarnya.jpg));
-			});
-
-	echo "Email Kekirim Coeg";
+	Auth::logout();
+	return redirect(url('/login'));
 });
+
+Route::post('/barang/save','BarangController@save');
+Route::get('/barang/add','BarangController@add');
+Route::get('/barang/edit/{id}','BarangController@edit');
+Route::post('/barang/update','BarangController@update');
+Route::get('/barang/delete/{id}','BarangController@delete');
+Route::post('/komentar','BarangController@komentar');
+Route::get('/hapuskomentar/{id}','BarangController@hapuskomentar');
+
+Route::get('/user/{id}/edit', 'HomeController@setting_profile');
+Route::get('/user/{id}/change-email','HomeController@setting_email');
+Route::get('/user/{id}/change-password', 'HomeController@setting_password');
+Route::get('/user/{id}/profile', 'ProfileController@profile');
+Route::post('/user/update/email','EmailController@update');
+Route::post('/user/update/password','EmailController@create');
+Route::get('/user/edit/{id}','ProfileController@edit');
+Route::post('/profile/update/','ProfileController@update');
+
+
+
+
+
+
+
+
