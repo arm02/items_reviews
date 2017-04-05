@@ -74,6 +74,7 @@ class BarangController extends Controller
         // }
 
         //njjn
+        //sadsdadsa
         $sampul_cek = date("YmdHis").uniqid()."."
         .$sampul->getClientOriginalExtension();
 
