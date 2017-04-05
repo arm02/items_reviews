@@ -69,11 +69,9 @@ a {
           <?php
             $cek = App\Image::where('id_barang', $barang->id)->get();
           ?>
-
           @foreach($cek as $value)
             <img src="{{ url('images/'.$value->lokasi_file) }}" style="width:50%;height:20%">
           @endforeach
-
       </div>
       <div class="caption">
       <br>
