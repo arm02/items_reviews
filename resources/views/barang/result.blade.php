@@ -7,9 +7,20 @@
 
 @section('beranda')
 <form action={{ url('search') }} method="GET" class="navbar-form navbar-left">
-    <div class="form-group">
-      <input type="text" name="q" class="form-control" value="{{ $search }}" placeholder="Search">
+  <div class="input-group">
+    <div class="input-group-btn">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a href="#">Loremmm</a></li>
+        <li><a href="#">ipsumsc</a></li>
+        <li><a href="#">dolor</a></li>
+        <li><a href="#">Lorsem</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#">amet</a></li>
+      </ul>
     </div>
+    <input type="text" name="q" class="form-control" value="{{ $search }}" required placeholder="Search">
+  </div>
 </form>
 @endsection
 
