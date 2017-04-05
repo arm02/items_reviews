@@ -14,7 +14,7 @@
         <li><a href="#">Loremmm</a></li>
         <li><a href="#">ipsumsc</a></li>
         <li><a href="#">dolor</a></li>
-        <li><a href="#">Lorem</a></li>
+        <li><a href="#">Lorsem</a></li>
         <li role="separator" class="divider"></li>
         <li><a href="#">amet</a></li>
       </ul>
