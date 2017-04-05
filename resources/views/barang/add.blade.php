@@ -10,9 +10,7 @@
  
 <div class="container">
   <h2>Add Items</h2>
-  <form class="col s12" method="POST"
-    action="{{url('barang/save')}}"
-    enctype="multipart/form-data">
+  <form class="col-sm-12" method="post" action="{{url('barang/save')}}" enctype="multipart/form-data">
     <div class="form-group">
       <label for="name">Items Name</label>
      <input id="nama_barang" type="text" 
@@ -65,13 +63,19 @@
     <div class="form-group">
         <label for="email">Photo</label>
           <div class="btn">
-              <input name="sampul" id="sampul" type="file" class="form-control" required=""   oninvalid="this.setCustomValidity('Select one Image')"
+              <input multiple="true" name="sampul[]" id="sampul" type="file" accept=".PNG, .JPEG, .JPG" class="form-control" required oninvalid="this.setCustomValidity('Select one Image')"
                 oninput="setCustomValidity('')">
           </div>
       </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit">Add</button>
-          <input type="hidden" name="_token"
+    <div class="row pull-right">
+      <div class="col-lg-12">
+      <input type="hidden" name="_token"
               value="{{csrf_token()}}">
+        <button class="btn btn-md btn-primary btn-block" style="width:150%" type="submit">Add</button>
+
+      </div>
+    </div>
+    </div>
   </form>
   </div>
  
@@ -88,7 +92,7 @@
             $('#img').attr('src', e.target.result);
         }
 
-        reader.readAsDataURL(input.files[0]);
+        reader.readAsDataURL(input.filees[0]);
     }
 }
 

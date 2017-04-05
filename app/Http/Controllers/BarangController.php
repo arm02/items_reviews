@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use File;
+use App\Barang;
+use App\Image;
 use Illuminate\Support\Facades\Input;
 use Auth;
 
@@ -33,10 +36,9 @@ class BarangController extends Controller
 
     }
 
-       public function save()
+       public function save(Request $a)
     {
-        $a = new \App\Barang;
-        $a->slug = str_slug(Input::get('nama_barang'));
+      $a->slug = str_slug(Input::get('nama_barang'));
     	$a->nama_barang = Input::get('nama_barang');
     	$a->asal = Input::get('asal');
   		$a->penjual = Input::get('penjual');
@@ -44,18 +46,89 @@ class BarangController extends Controller
   		$a->kondisi = Input::get('kondisi');
         $a->id_user = Auth::user()->id;
         $a->sampul ='';
-        if(Input::hasFile('sampul')){
-            $sampul = date("YmdHis")
-            .uniqid()
-            ."."
-            .Input::file('sampul')->getClientOriginalExtension();
-            Input::file('sampul')->move(storage_path('sampul'),$sampul);
-            $a->sampul = $sampul;
-        }
+
+
+        // if(Input::hasFile('sampul')){
+        //     $sampul = date("YmdHis").uniqid()."."
+        //     .Input::file('sampul')->getClientOriginalExtension();
+        //     Input::file('sampul')->move(storage_path('sampul'),$sampul);
+        //     $a->sampul = $sampul;
+        // }
+
+        // $picture = '';
+
+       // dd(Input::hasFile('sampul'));
+
+        if (Input::hasFile('sampul')) {
+
+        $files = Input::file('sampul');
+
+        foreach($files as $file){
+        $filename = $file->getClientOriginalName();
+        $extension = $file->getClientOriginalExtension();
+        $a = date('H:i:s');
+        $destinationPath = base_path() . '\storage\sampul';
+        $file->move($destinationPath, $a);
+
+        $a->sampul = $sampul;
+    }
+}
+
+
       $a->desc = Input::get('desc');
     	$a->save();
     	return redirect(url('barang/list'));
     }
+
+
+    public function savelagi(Request $request)
+    {
+
+  Barang::create([
+
+      'slug' => str_slug(Input::get('nama_barang')),
+      'nama_barang' => Input::get('nama_barang'),
+      'asal' => Input::get('asal'),
+      'penjual' => Input::get('penjual'),
+      'asal' => Input::get('asal'),
+      'harga' => Input::get('harga'),
+      'kondisi' => Input::get('kondisi'),
+      'id_user' => Auth::user()->id
+
+
+    ]);
+
+      if (Input::hasFile('sampul')) {
+
+      $files = Input::file('sampul');
+
+      foreach($files as $sampul) {
+        
+
+        // $destinationPath = 'sampul';
+
+        // if(!is_dir($destinationPath)){
+        //   File::makeDirectory(storage_path().'/'.$destinationPath,0777,true);
+        // }
+
+        $sampul_cek = date("YmdHis").uniqid()."."
+        .$sampul->getClientOriginalExtension();
+
+        $sampul->move(storage_path('sampul'), $sampul_cek);
+
+        $cek = Barang::orderby('id','desc')->first();
+
+        Image::create([
+          'id_barang' => $cek->id,
+          'lokasi_file' => $sampul_cek
+          ]);
+
+    }
+  } 
+
+  return redirect(url('barang/list'));
+
+  }
 
     public function update()
     {

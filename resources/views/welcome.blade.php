@@ -2,7 +2,7 @@
 
     @section('header')
 
-        <title>Laravel &raquo; Home</title>
+        <title>Review</title>
 
     @endsection
 

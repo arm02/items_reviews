@@ -45,7 +45,7 @@ Route::get('/logout',function ()
 	return redirect(url('/login'));
 });
 
-Route::post('/barang/save','BarangController@save');
+Route::post('/barang/save','BarangController@savelagi');
 Route::get('/barang/add','BarangController@add');
 Route::get('/barang/edit/{id}','BarangController@edit');
 Route::post('/barang/update','BarangController@update');

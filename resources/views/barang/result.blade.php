@@ -32,32 +32,34 @@
     s.parentNode.insertBefore(rw, s);
     }(document, new Date(), "script", "rating-widget.com/"));</script>
 
-
-@if (count($hasil))
-<div class="page-header">
-<div class="alert alert-success" role="alert">Hasil pencarian : <b>{{$search}}</b></div>
+<div class="row text-center">
+<div class="col-md-12">
+<input class="form-control" style="width:30%;margin-left:27%" type="text">
+<button class="btn btn-md btn-primary" style="margin-top:-4.8%;margin-left:20%">Go !</button>
 </div>
-
+</div>
+<br>
+@if (count($hasil))
 <div class="container">
 <div class="row">
 @foreach($hasil as $data)
-  <div class="col-md-4">
-    <div class="thumbnail">
+  <div class="col-md-3">
+    <div class="thumbnail" style="height: 400px;">
         <div align="center">
         <h5><font color="red"> {{ $data->asal }}</h5></font>
         <h6>Posted by {{\App\User::find($data->id_user)['name']}}</h6>
         <hr>
         </div>  
       <img style="height: 150px;" src="{{url('images/'.$data->sampul)}}">
-      <div class="caption">
-      <div class="rw-ui-container" align="right"></div>
+      <div class="caption" style="height: 60px">
         <h6>{{ $data->nama_barang }}</h6>
         <h5>Rp.{{ $data->harga }} </h5>
-        <br>
-        <div align="center">
-        <p><a href="{{url('/'.$data->slug)}}" class="btn btn-primary" role="button">Read More</a></p>
-        </div>
       </div>
+        <hr>
+        <div align="center" style="position: relative;">
+        <p><a href="{{url('/'.$data->slug)}}" class="btn btn-primary" role="button">Read More</a></p>
+      </div>
+        <br>
     </div>
   </div>
 @endforeach

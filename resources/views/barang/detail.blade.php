@@ -4,7 +4,14 @@
 
         <title>Add&raquo; Items</title>
 
-
+<style type="text/css">
+    a, u {
+    text-decoration: none;
+}
+a {
+    text-decoration: none !important;
+}
+</style>
     @endsection
 
 @section('content')
@@ -57,7 +64,17 @@
         <br>
     <div class="thumbnail">
     	<br>
-      <img width="600" height="550" src="{{url('images/'.$barang->sampul)}}">
+      <img width="500" height="450" src="{{url('images/'.$barang->sampul)}}">
+      <div class="col-md-12">
+          <?php
+            $cek = App\Image::where('id_barang', $barang->id)->get();
+          ?>
+
+          @foreach($cek as $value)
+            <img src="{{ url('images/'.$value->lokasi_file) }}" style="width:50%;height:20%">
+          @endforeach
+
+      </div>
       <div class="caption">
       <br>
         <div align="left">
@@ -85,17 +102,16 @@
 	<h3>Comment</h3>
 	<hr>
 	@foreach($komentar as $key)	
-  <div class="panel panel-default">
-  <div class="panel-heading">
-  <h6><a href="/user/{{\App\User::find($key->id_user)['id']}}/profile">
+  <div class="card card-default">
+  <div class="card-heading" style="height: 25px;">
+    <h6><a href="/user/{{\App\User::find($key->id_user)['id']}}/profile">
   	<img src="{{'images/'.App\User::find($key->id_user)['sampul']}}" 
 	class="img-circle" width="20" height="20">&nbsp;
 	<b>{{\App\User::find($key->id_user)['name']}}</a></h6></b>
 	</div>
-	<div class="panel-body">
-    <p style="white-space: pre-line;">{{$key->isi}}</p>
-    	
-    <h6 align="right"><div  class="rw-ui-container"></div>&nbsp;&nbsp; at {{$key->created_at->format('D M, d Y \a\t h:i A')}}</h6>
+	<div class="card-body card-info" style="height: auto;">
+    <p style="white-space: pre-line;">{{$key->isi}}</p>	
+    <h6 align="right"><div class="rw-ui-container"></div>&nbsp;&nbsp; at {{$key->created_at->format('D M, d Y \a\t h:i A')}}</h6>
     	</div>
     	</div>
     	@endforeach
