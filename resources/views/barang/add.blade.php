@@ -10,7 +10,8 @@
  
 <div class="container">
   <h2>Add Items</h2>
-  <form class="col-sm-12" method="post" action="{{url('barang/save')}}" enctype="multipart/form-data">
+  <form class="col-sm-12" method="post" action="{{url('barang/save')}}" 
+  enctype="multipart/form-data">
     <div class="form-group">
       <label for="name">Items Name</label>
      <input id="nama_barang" type="text" 
@@ -60,6 +61,13 @@
     <div>
     </center>
   </div>
+      <div class="form-group">
+        <label for="email">Photo</label>
+          <div class="btn">
+              <input name="photo_header[]" id="photo_header" type="file" accept=".PNG, .JPEG, .JPG" class="form-control" required oninvalid="this.setCustomValidity('Select one Image')"
+                oninput="setCustomValidity('')">
+          </div>
+
     <div class="form-group">
         <label for="email">Photo</label>
           <div class="btn">
@@ -67,11 +75,11 @@
                 oninput="setCustomValidity('')">
           </div>
       </div>
-    <div class="row pull-right">
+    <div class="row">
       <div class="col-lg-12">
       <input type="hidden" name="_token"
               value="{{csrf_token()}}">
-        <button class="btn btn-md btn-primary btn-block" style="width:150%" type="submit">Add</button>
+        <button class="btn btn-md btn-primary btn-block" type="submit">Add</button>
 
       </div>
     </div>
@@ -81,22 +89,4 @@
  
 @endsection
 
-<script type="text/javascript">
-  
-  function readURL(input) {
 
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            $('#img').attr('src', e.target.result);
-        }
-
-        reader.readAsDataURL(input.filees[0]);
-    }
-}
-
-$("#sampul").change(function(){
-    readURL(this);
-});
-</script>

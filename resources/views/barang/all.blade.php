@@ -78,14 +78,14 @@
         <h6>Posted by {{\App\User::find($data->id_user)['name']}}</h6>
         <hr>
         </div>
-        <img class="www" style="height: 150px;" src="{{url('images/'.$data->sampul)}}">
+        <img class="www" style="height: 150px;" src="{{url('images/'.$data->photo_header)}}">
         <div class="caption">
         <div class="rw-ui-container" align="right"></div>
         <h6><b>{{ $data->nama_barang }}</h6></b>
         <h5>Rp.{{ $data->harga }} </h5>
         <br>
         <div align="center">
-        <p><a href="{{url('/'.$data->slug)}}" class="btn btn-primary" role="button">Read More</a></p>
+        <p><a href="{{url('/'.$data->slug)}}" class="btn btn-primary" style="width: 100%;" role="button">Read More</a></p>
         </div>
         </div>
         </div>

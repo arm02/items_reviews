@@ -15,7 +15,7 @@ class Barang extends Model
     'penjual',
     'harga',
     'kondisi',
-    'sampul',
+    'photo_header',
     'desc'
     ];
 }

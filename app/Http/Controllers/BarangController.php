@@ -36,56 +36,17 @@ class BarangController extends Controller
 
     }
 
-       public function save(Request $a)
-    {
-      $a->slug = str_slug(Input::get('nama_barang'));
-    	$a->nama_barang = Input::get('nama_barang');
-    	$a->asal = Input::get('asal');
-  		$a->penjual = Input::get('penjual');
-  		$a->harga = Input::get('harga');
-  		$a->kondisi = Input::get('kondisi');
-        $a->id_user = Auth::user()->id;
-        $a->sampul ='';
-
-
-        // if(Input::hasFile('sampul')){
-        //     $sampul = date("YmdHis").uniqid()."."
-        //     .Input::file('sampul')->getClientOriginalExtension();
-        //     Input::file('sampul')->move(storage_path('sampul'),$sampul);
-        //     $a->sampul = $sampul;
-        // }
-
-        // $picture = '';
-
-       // dd(Input::hasFile('sampul'));
-
-        if (Input::hasFile('sampul')) {
-
-        $files = Input::file('sampul');
-
-        foreach($files as $file){
-        $filename = $file->getClientOriginalName();
-        $extension = $file->getClientOriginalExtension();
-        $a = date('H:i:s');
-        $destinationPath = base_path() . '\storage\sampul';
-        $file->move($destinationPath, $a);
-
-        $a->sampul = $sampul;
-    }
-}
-
-
-      $a->desc = Input::get('desc');
-    	$a->save();
-    	return redirect(url('barang/list'));
-    }
-
-
     public function savelagi(Request $request)
     {
 
+      if (Input::hasFile('photo_header')) {
+        $files = Input::file('photo_header');
+         foreach($files as $sampul) {
+        $sampul_header = date("YmdHis").uniqid()."."
+        .$sampul->getClientOriginalExtension();
+        $sampul->move(storage_path('sampul'), $sampul_header);
 
-  Barang::create([
+       Barang::create([
 
       'slug' => str_slug(Input::get('nama_barang')),
       'nama_barang' => Input::get('nama_barang'),
@@ -95,15 +56,15 @@ class BarangController extends Controller
       'harga' => Input::get('harga'),
       'kondisi' => Input::get('kondisi'),
       'id_user' => Auth::user()->id,
-      /*'photo_header' => $nama_imagenya*/
+      'photo_header' => $sampul_header
 
 
-    ]);
-
+        ]);
+      }
+}
       if (Input::hasFile('sampul')) {
 
       $files = Input::file('sampul');
-
       foreach($files as $sampul) {
 
         // $destinationPath = 'sampul';
@@ -111,6 +72,9 @@ class BarangController extends Controller
         // if(!is_dir($destinationPath)){
         //   File::makeDirectory(storage_path().'/'.$destinationPath,0777,true);
         // }
+
+        //njjn
+        //sadsdadsa
         $sampul_cek = date("YmdHis").uniqid()."."
         .$sampul->getClientOriginalExtension();
 
@@ -125,9 +89,7 @@ class BarangController extends Controller
 
     }
   } 
-
   return redirect(url('barang/list'));
-
   }
 
     public function update()
