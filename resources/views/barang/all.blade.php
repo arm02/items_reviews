@@ -67,7 +67,7 @@
         <h6>Posted by {{\App\User::find($data->id_user)['name']}}</h6>
         <hr>
         </div>
-        <img class="www" style="height: 150px;" src="{{url('images/'.$data->sampul)}}">
+        <img class="www" style="height: 150px;" src="{{url('images/'.$data->photo_header)}}">
         <div class="caption">
         <div class="rw-ui-container" align="right"></div>
         <h6><b>{{ $data->nama_barang }}</h6></b>

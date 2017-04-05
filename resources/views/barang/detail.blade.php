@@ -64,7 +64,7 @@ a {
         <br>
     <div class="thumbnail">
     	<br>
-      <img width="500" height="450" src="{{url('images/'.$barang->sampul)}}">
+      <img width="500" height="450" src="{{url('images/'.$barang->photo_header)}}">
       <div class="col-md-12">
           <?php
             $cek = App\Image::where('id_barang', $barang->id)->get();
