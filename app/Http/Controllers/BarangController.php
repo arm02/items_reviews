@@ -72,6 +72,8 @@ class BarangController extends Controller
         // if(!is_dir($destinationPath)){
         //   File::makeDirectory(storage_path().'/'.$destinationPath,0777,true);
         // }
+
+        //njjn
         $sampul_cek = date("YmdHis").uniqid()."."
         .$sampul->getClientOriginalExtension();
 
