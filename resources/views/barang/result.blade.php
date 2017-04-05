@@ -48,14 +48,14 @@
 <div class="container">
   <div class="row">
     @foreach($hasil as $data)
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="thumbnail">
         <div align="center">
           <h5><font color="red"> {{ $data->asal }}</h5></font>
           <h6>Posted by {{\App\User::find($data->id_user)['name']}}</h6>
           <hr>
         </div>
-        <img style="height: 150px;" src="{{url('images/'.$data->sampul)}}">
+        <img style="height: 150px;" src="{{url('images/'.$data->photo_header)}}">
         <div class="caption">
           <div class="rw-ui-container" align="right"></div>
           <h6>{{ $data->nama_barang }}</h6>
