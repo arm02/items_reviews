@@ -71,9 +71,9 @@
           </ul>
           <!-- Right Side Of Navbar -->
           <ul class="nav navbar-nav navbar-right">
-            @yield('beranda')
             <li><a href="{{url('/barang/beranda')}}"><span class="glyphicon glyphicon-home">
             </span>&nbsp;&nbsp;Beranda</li></a></b>
+            @yield('beranda')
             @if (Auth::guest())
             <li><a href="{{ url('/login') }}"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Sign In</a></li>
             <li><a href="{{ url('/register') }}"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;Sign Up</a></li>
