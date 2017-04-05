@@ -84,16 +84,18 @@ class BarangController extends Controller
     public function savelagi(Request $request)
     {
 
+
   Barang::create([
 
       'slug' => str_slug(Input::get('nama_barang')),
       'nama_barang' => Input::get('nama_barang'),
       'asal' => Input::get('asal'),
       'penjual' => Input::get('penjual'),
-      'asal' => Input::get('asal'),
+      'desc' => Input::get('desc'),
       'harga' => Input::get('harga'),
       'kondisi' => Input::get('kondisi'),
-      'id_user' => Auth::user()->id
+      'id_user' => Auth::user()->id,
+      /*'photo_header' => $nama_imagenya*/
 
 
     ]);
@@ -103,14 +105,12 @@ class BarangController extends Controller
       $files = Input::file('sampul');
 
       foreach($files as $sampul) {
-        
 
         // $destinationPath = 'sampul';
 
         // if(!is_dir($destinationPath)){
         //   File::makeDirectory(storage_path().'/'.$destinationPath,0777,true);
         // }
-
         $sampul_cek = date("YmdHis").uniqid()."."
         .$sampul->getClientOriginalExtension();
 
