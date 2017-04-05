@@ -51,7 +51,7 @@
                 <li><a href="#">dolor</a></li>
                 <li><a href="#">Lorem</a></li>
                 <li role="separator" class="divider"></li>
-                <li><a href="#">amet</a></li>
+                <li><a href="#">amcet</a></li>
               </ul>
             </div>
             <input type="text" name="q" class="form-control" placeholder="Search Here" required autofocus>

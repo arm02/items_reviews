@@ -17,7 +17,7 @@
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>
         <ul class="dropdown-menu">
           <li><a href="#">Loremmm</a></li>
-          <li><a href="#">ipsucm</a></li>
+          <li><a href="#">ipsuccm</a></li>
           <li><a href="#">dolor</a></li>
           <li><a href="#">Lorem</a></li>
           <li role="separator" class="divider"></li>
