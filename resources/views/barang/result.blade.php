@@ -73,7 +73,7 @@
           <h5>Rp.{{ $data->harga }} </h5>
           <br>
           <div align="center">
-            <p><a href="{{url('/'.$data->slug)}}" class="btn btn-primary" role="button">Read More</a></p>
+            <p><a href="{{url('/'.$data->slug)}}" style="width: 100%;" class="btn btn-primary" role="button">Read More</a></p>
           </div>
         </div>
       </div>
