@@ -7,19 +7,25 @@
 	@endsection
 
 	@section('content')
-
+<style type="text/css">
+    a, u {
+    text-decoration: none;
+}
+a {
+    text-decoration: none !important;
+}
+</style>
 	<br>
 	<div class="container">
 	<div class="row">
-
-	<div class="panel panel-default" align="center">
-  <!-- Default panel contents -->
+	<center><div class="panel panel-default" style="width: 50%;">
+  <!-- Default panel contents -->  
   <div class="panel-heading" align="center"><th>Your Review</th></div>
   <!-- Table -->
-  </div>
+  </div></center>  
 
   <div class="centered">
-  <table class="table">
+  <table class="table table-hover">
     <thread>
 				<tr>
 					<th>Name</th>
@@ -28,7 +34,7 @@
 					<th>Price</th>
 					<th>Condition</th>
 					<th>Desc</th>
-					<th colspan="2">Action</th>
+					<th colspan="2" style="text-align: center;">Action</th>
 					</tr>
 
 				</thread>
@@ -42,27 +48,19 @@
 						<td>{{$key->kondisi}}</td>
 						<td>{{substr(strip_tags($key->desc),0,100)}}&nbsp;...</td>
 
-						<td><a href="{{url('barang/edit/'.$key->id)}}">
-						Edit
+						<td align="center"><a href="{{url('barang/edit/'.$key->id)}}">
+						<button style="width: 100%;" class="btn btn-primary">Edit</button>
 						</a>
 						</td>
 
-						<td><a href="{{url('barang/delete/'.$key->id)}}"
+						<td align="center"><a href="{{url('barang/delete/'.$key->id)}}"
 						onclick="return confirm('Are you sure to delete {{$key->judul}}?')">
-						Delete
+						<button style="width: 100%;" class="btn btn-danger">Delete</button>
 						</a>
 
 						</tr>
 
-						@endforeach
-						@if(sizeof($barang)==0)
-						<tr>
-						<td colspan="6" class="center">
-							<div>No Data</div>
-							<div><a href="{{url('barang/add')}}"
-							class="waves-effect waves-light btn">Add New</a></div></td></tr>
-
-							@endif
+						@endforeach						
 
 				</tbody>
 				 </div>
@@ -71,6 +69,19 @@
 				</div>
 
   </table>
-</div>
+  </div>
+  @if(sizeof($barang)==0)
+  <div style="text-align: center;"><h2>No Data</h2></div>
+  @endif
+  <table class="table table-strip">
+    <thread>
+						<tr>
+						<td style="text-align: center;">
+							<div><a href="{{url('barang/add')}}"
+							class="waves-effect waves-light btn"><button class="btn btn-primary">Add New</button></a></div></td></tr>
+							</thread>
+							</table>
+
+							
 
 				@endsection
