@@ -104,13 +104,13 @@ a {
 	@foreach($komentar as $key)	
   <div class="card card-default">
   <div class="card-heading" style="height: 25px;">
-    <h6><a href="/user/{{\App\User::find($key->id_user)['id']}}/profile">
+    <h5><a href="/user/{{\App\User::find($key->id_user)['id']}}/profile">
   	<img src="{{'images/'.App\User::find($key->id_user)['sampul']}}" 
 	class="img-circle" width="20" height="20">&nbsp;
-	<b>{{\App\User::find($key->id_user)['name']}}</a></h6></b>
+	<b>{{\App\User::find($key->id_user)['name']}}</a></h5></b>
 	</div>
 	<div class="card-body card-info" style="height: auto;">
-    <p style="white-space: pre-line;">{{$key->isi}}</p>	
+    <p style="white-space: pre-line;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$key->isi}}</p>	
     <h6 align="right"><div class="rw-ui-container"></div>&nbsp;&nbsp; at {{$key->created_at->format('D M, d Y \a\t h:i A')}}</h6>
     	</div>
     	</div>
@@ -124,7 +124,9 @@ a {
 	      required="" oninvalid="this.setCustomValidity('Please Comment Here')"
 	      oninput="setCustomValidity('')"></textarea>
       	<br>
-		<button type="submit" class="btn btn-lg btn-primary btn-block">Comment</button>
+        
+		<button type="submit" style="width: 10%;" class="btn btn-lg btn-primary btn-block pull-right">Comment</button>
+
 				<br><br>
 				<input type="hidden" name="_token"
 					value="{{csrf_token()}}">
