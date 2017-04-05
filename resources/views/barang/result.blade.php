@@ -19,7 +19,7 @@
         <li><a href="#">amet</a></li>
       </ul>
     </div>
-    <input type="text" name="q" class="form-control" value="{{ $search }}" placeholder="Search">
+    <input type="text" name="q" class="form-control" value="{{ $search }}" required placeholder="Search">
   </div>
 </form>
 @endsection

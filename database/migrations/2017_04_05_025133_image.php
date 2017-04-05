@@ -13,7 +13,7 @@ class Image extends Migration
      */
     public function up()
     {
-            Schema::create('images', function (Blueprint $table) {
+            Schema::create('image', function (Blueprint $table) {
             $table->increments('id');
             $table->string('lokasi_file');
             $table->string('id_barang');

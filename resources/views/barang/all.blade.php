@@ -24,7 +24,7 @@
           <li><a href="#">amet</a></li>
         </ul>
       </div>
-      <input type="text" name="q" class="form-control" value="  " placeholder="Search">
+      <input type="text" name="q" class="form-control" value="" required placeholder="Search">
     </div>
   </form>
   @endsection
