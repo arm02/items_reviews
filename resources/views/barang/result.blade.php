@@ -5,6 +5,14 @@
 <title>Laravel &raquo; Home</title>
 @endsection
 
+@section('beranda')
+<form action={{ url('search') }} method="GET" class="navbar-form navbar-left">
+    <div class="form-group">
+      <input type="text" name="q" class="form-control" value="{{ $search }}" placeholder="Search">
+    </div>
+</form>
+@endsection
+
 @section('content')
 
 <script type="text/javascript">(function(d, t, e, m){
@@ -32,14 +40,6 @@
   s.parentNode.insertBefore(rw, s);
 }(document, new Date(), "script", "rating-widget.com/"));</script>
 
-<form action={{ url('search') }} method="GET" class="form-signin">
-<div class="row text-center">
-  <div class="col-md-12">
-    <input class="form-control" name="q" style="width:30%;margin-left:27%" type="text">
-    <button class="btn btn-md btn-primary" style="margin-top:-4.8%;margin-left:20%">Go !</button>
-  </div>
-</div>
-</form>
 @if (count($hasil))
 <div class="page-header">
   <div class="alert alert-success" role="alert">Hasil pencarian : <b>{{$search}}</b></div>

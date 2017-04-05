@@ -61,11 +61,3 @@ Route::post('/user/update/email','EmailController@update');
 Route::post('/user/update/password','EmailController@create');
 Route::get('/user/edit/{id}','ProfileController@edit');
 Route::post('/profile/update/','ProfileController@update');
-
-
-
-
-
-
-
-
