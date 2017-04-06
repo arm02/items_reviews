@@ -55,9 +55,9 @@
 <div class="page-header">
   <div class="alert alert-success" role="alert">Hasil pencarian : <b>{{$search}}</b></div>
 </div><br>
-
+<!-- ////// -->
 <div class="container">
-  <div class="row">
+  <div class="row"> 
     @foreach($hasil as $data)
     <div class="col-md-3">
       <div class="thumbnail">
