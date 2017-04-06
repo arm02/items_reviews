@@ -66,9 +66,7 @@ line-height: 1.4em;
                      <center>                       
                        <div style="display: inline-flex;" class="input-group col-md-12">                        
                        <select class="btn btn-primary pull-left" name="category" required>
-                           <option class="btn-primary" value="">Categories</option>
-                             <option value="">-- Cari Online Shop --</option>
-                               <option value="search">Cari Semua Shop</option>
+                           <option class="btn-primary" value="search">All Categories</option>
                            @foreach($category as $data)
                            <option class="btn-primary" value="{{ $data->nama_category }}  "> {{ $data->nama_category }}</option>
                            @endforeach
