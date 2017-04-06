@@ -66,15 +66,6 @@ class BarangController extends Controller
 
       $files = Input::file('sampul');
       foreach($files as $sampul) {
-
-        // $destinationPath = 'sampul';
-
-        // if(!is_dir($destinationPath)){
-        //   File::makeDirectory(storage_path().'/'.$destinationPath,0777,true);
-        // }
-
-        //njjn
-        //sadsdadsa
         $sampul_cek = date("YmdHis").uniqid()."."
         .$sampul->getClientOriginalExtension();
 
@@ -102,13 +93,14 @@ class BarangController extends Controller
       $a->penjual = Input::get('penjual');
       $a->harga = Input::get('harga');
       $a->kondisi = Input::get('kondisi');
-        if(Input::hasFile('sampul')){
-            $sampul = date("YmdHis")
+      $a->desc = Input::get('desc');
+        if(Input::hasFile('photo_header')){
+            $photo_header = date("YmdHis")
             .uniqid()
             ."."
-            .Input::file('sampul')->getClientOriginalExtension();
-            Input::file('sampul')->move(storage_path('sampul'),$sampul);
-            $a->sampul = $sampul;
+            .Input::file('photo_header')->getClientOriginalExtension();
+            Input::file('photo_header')->move(storage_path('sampul'),$photo_header);
+            $a->photo_header = $photo_header;
         }
       $a->save();
       return redirect(url('barang/list'));
