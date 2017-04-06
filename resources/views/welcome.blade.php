@@ -58,7 +58,7 @@
 
       <div class="container">
                <div class="row">
-                 <form action=http://localhost:2000/search method="GET" class="form-signin">
+                 <form action="{{ url('search') }}" method="GET" class="form-signin">
                    <div class="center" style="width:500px; margin:0 auto;">
                      <center>
                        <input type="text" name="query" class="form-control" placeholder="Search Here" required autofocus>
