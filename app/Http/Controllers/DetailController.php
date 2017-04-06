@@ -20,9 +20,10 @@ class DetailController extends Controller
   public function search(Request $request)
   {
     $search = $request->get('query');
-    if (!$search){ return redirect(url('/')); }
+  // if (!$search){ return redirect(url('/')); }
     $cat = $request->get('category');
-    if (!$cat){ return redirect(url('/')); }
+  // if (!$cat){ return redirect(url('/')); }
+     if ($cat == "search") { return redirect(url('/search')); }
     $hasil =  \App\Barang::where('nama_barang', 'LIKE', '%' . $search . '%')->where('asal', 'LIKE', '%' . $cat . '%')->paginate(10);
     return view('barang/result', compact('hasil', 'search','cat'));
     return view('barang/all', compact('hasil', 'search','cat'));
