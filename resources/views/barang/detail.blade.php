@@ -124,16 +124,14 @@ p {
     	</div>
     	@endforeach
 		</div>
-
-        <label for="email">Write Comment</label>
+    <br>
+    <label for="email">&nbsp;&nbsp;&nbsp;&nbsp;Write Comment</label><p></p>
 		<form method="POST" action="{{url('komentar')}}">
-		<div class="form-group">	
-	      <textarea class="form-control" id="isi" placeholder="Comment" name="isi" 
+		<div class="form-group" align="center">	
+	      <textarea class="form-control" id="isi" style="width: 90%;" placeholder="Comment" name="isi" 
 	      required="" oninvalid="this.setCustomValidity('Please Comment Here')"
-	      oninput="setCustomValidity('')"></textarea>
-      	<br>
-        
-		<button type="submit" style="width: 10%;" class="btn btn-lg btn-primary btn-block pull-right">Comment</button>
+	      oninput="setCustomValidity('')"></textarea><p></p>
+		<button type="submit" style="width: 10%;" class="btn btn-lg btn-primary btn-block glyphicon glyphicon-send "></button>
 
 				<br><br>
 				<input type="hidden" name="_token"
@@ -142,5 +140,6 @@ p {
 				    value={{$barang->id}}>	
 		</div>
 		</form>
+    </div>
 		
 @endsection
