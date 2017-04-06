@@ -128,7 +128,7 @@ class BarangController extends Controller
         $a->sampul_user = Auth::user()->sampul;
         $a->save();
         $key = \App\Barang::find(Input::get('id_artikel'));
-        return  redirect(url($key->slug));
+        return  redirect(url('item-'.$key->id));
 
     }
     public function hapuskomentar($id)
