@@ -11,7 +11,7 @@ class DetailController extends Controller
 
   public function detail($id)
   {
-    $data['barang'] = \App\Barang::whereSlug($id)->first();
+    $data['barang'] = \App\Barang::find($id);
     if (!$data['barang']){ abort(404); }
     $data['komentar']=\App\komentar::whereIdArtikel($data['barang']->id)->get();
     return view('barang.detail')->with($data);
@@ -38,6 +38,7 @@ class DetailController extends Controller
   {
     $data['barang'] = \App\Barang::paginate(16);
     return view('barang.all')->with($data);
+    
   }
 
 

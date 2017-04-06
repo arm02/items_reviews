@@ -26,7 +26,8 @@ class BarangController extends Controller
 
       public function add()
     {
-      return view('barang.add');
+      $data['category'] = \App\Category::paginate(16);
+      return view('barang.add')->with($data);
     }
 
         public function edit($id)

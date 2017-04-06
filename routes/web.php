@@ -41,7 +41,7 @@ Route::get('/home', 'HomeController@index');
 Route::get('/search', 'DetailController@search');
 Route::get('/barang/list', 'BarangController@index');
 Route::get('/barang/beranda' , 'DetailController@all');
-Route::get('{id}','DetailController@detail');
+Route::get('item-{id}','DetailController@detail');
 
 Route::get('/logout',function ()
 {

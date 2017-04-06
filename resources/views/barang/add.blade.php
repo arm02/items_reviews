@@ -22,17 +22,10 @@
       <label for="pwd">Home Store</label>
          <label for="sel1">(select one):</label>
       <select class="form-control" id="sel1" name="asal">
-        <option>Tokopedia.com</option>
-        <option>Bukalapak.com</option>
-        <option>Lazada.co.id</option>
-        <option>Mataharimall.com</option>
-        <option>Blibli.com</option>
-        <option>Zalora.co.id</option>
-         <option>Kaskus.co.id</option>
-         <option>Bhinneka.com</option>
-        <option>Elevenia.co.id</option>
-        <option>www.blanja.com</option>
-          <option>Qoo10.co.id</option>
+       @foreach($category as $data)
+       <option value="{{ $data->nama_category }}">{{ $data->nama_category }}
+       </option>
+       @endforeach
       </select>
     </div>
       <div class="form-group">
