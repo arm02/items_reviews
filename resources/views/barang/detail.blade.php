@@ -86,6 +86,8 @@ p {
     <center>
     <p><br></p>
 
+    <!-- test -->
+
         <img  style="width: 50%; height: 50%;" class = 'cloudzoom-gallery' src = "{{url('images/'.$barang->photo_header)}}" data-cloudzoom = "useZoom: '.cloudzoom', image: '{{url('images/'.$barang->photo_header)}}', zoomImage: '{{url('images/'.$barang->photo_header)}}' "><p><br></p>
           <?php
             $cek = App\Image::where('id_barang', $barang->id)->get();
