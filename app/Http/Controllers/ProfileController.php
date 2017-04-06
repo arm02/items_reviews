@@ -19,12 +19,14 @@ class ProfileController extends Controller
        public function profile($id)
     {
     	 $data['user']=\App\User::find($id);
+       if (!$data['user']){ abort(404); }
       return view('profile.profile')->with($data);
     }
 
        public function edit($id)
     {
     	$data['user']=\App\User::find($id);
+      if (!$data['user']){ abort(404); }
 		return view('auth.setting_profile')->with($data);
 
     }
@@ -53,4 +55,4 @@ class ProfileController extends Controller
       $a->save();
       return redirect(url('user/'.Auth::user()->id. '/edit'));
     }
-  } 
+  }

@@ -11,7 +11,7 @@ use Auth;
 
 class BarangController extends Controller
 {
-    
+
 
       public function __construct()
     {
@@ -32,6 +32,8 @@ class BarangController extends Controller
         public function edit($id)
     {
       $data['barang']=\App\Barang::find($id);
+      if (!$data['barang']){ return redirect(url('/barang/list')); }
+      if (Auth::user()->id != $data['barang']->id_user){ return redirect(url('/barang/list')); }
       return view('barang.edit')->with($data);
 
     }
@@ -88,7 +90,7 @@ class BarangController extends Controller
           ]);
 
     }
-  } 
+  }
   return redirect(url('barang/list'));
   }
 
@@ -117,6 +119,8 @@ class BarangController extends Controller
       public function delete($id)
     {
       $a = \App\Barang::find($id);
+      if (!$a){ return redirect(url('/barang/list')); }
+      if (Auth::user()->id != $a->id_user){ return redirect(url('/barang/list')); }
       $a->delete();
 
       return redirect(url('barang/list'));
@@ -132,13 +136,13 @@ class BarangController extends Controller
         $a->save();
         $key = \App\Barang::find(Input::get('id_artikel'));
         return  redirect(url($key->slug));
-            
-    }   
+
+    }
     public function hapuskomentar($id)
     {
         $a = \App\komentar::find($id);
         $key = \App\Barang::find($a->id_artikel);
         $a->delete();
-        return redirect(url($key->slug));  
+        return redirect(url($key->slug));
     }
 }

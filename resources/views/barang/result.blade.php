@@ -51,13 +51,13 @@
   s.parentNode.insertBefore(rw, s);
 }(document, new Date(), "script", "rating-widget.com/"));</script>
 
-@if (count($hasil))
-<div class="page-header">
-  <div class="alert alert-success" role="alert">Hasil pencarian : <b>{{$search}}</b></div>
-</div><br>
-<!-- ////// -->
 <div class="container">
-  <div class="row"> 
+  @if (count($hasil))
+  <div class="page-header">
+    <div class="alert alert-success" role="alert">Hasil pencarian : <b>{{$search}}</b> di kategori {{ $cat }}</div>
+  </div><br>
+  <!-- ////// -->
+  <div class="row">
     @foreach($hasil as $data)
     <div class="col-md-3">
       <div class="thumbnail">
@@ -81,9 +81,11 @@
     @endforeach
   </div>
 </div>
+</div>
 @else
 <center>
-  <div class="alert alert-danger" style="width: 50%;"> Oops.. Data <b>{{$search}}</b> Tidak Ditemukan</div>
+  <div class="alert alert-danger" style=""> Oops.. Data <b>{{ $search }}</b> di kategori {{ $cat }} Tidak Ditemukan</div>
 </center>
+
 @endif
 @endsection
