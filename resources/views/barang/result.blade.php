@@ -83,7 +83,7 @@
 </div>
 @else
 <center>
-  <div class="alert alert-danger"> Oops.. Data <b>{{$search}}</b> Tidak Ditemukan</div>
+  <div class="alert alert-danger" style="width: 50%;"> Oops.. Data <b>{{$search}}</b> Tidak Ditemukan</div>
 </center>
 @endif
 @endsection

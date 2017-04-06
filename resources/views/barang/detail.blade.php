@@ -11,6 +11,10 @@
 a {
     text-decoration: none !important;
 }
+p {
+    margin: 0;
+    padding: 0;
+}
 </style>
     @endsection
 
@@ -62,8 +66,8 @@ a {
         <h2><b>Rp. {{$barang->harga}}</h2></b>
         <tr>
         <br>
-    <div class="thumbnail">
-    	<br>
+    <div class="thumbnail btn-default">
+    	<p><br></p>
       <img width="500" height="450" src="{{url('images/'.$barang->photo_header)}}">
       <div class="col-md-12">
           <?php
@@ -78,15 +82,19 @@ a {
       <div class="caption">
       <br>
         <div align="left">
-        <h3><b>Seller : {{$barang->penjual}}</h3></b>
-        <p><b>Keadaan Barang : {{$barang->kondisi}}</p></b>
-        </font> 
-        <br>
-        <br>
+        <p><br></p>
+        <h3><b><p style="text-indent: 50px;">Seller : {{$barang->penjual}}</p></b></h3>
+        <p style="text-indent: 50px;"><b>Keadaan Barang : {{$barang->kondisi}}</p></b>
+        <p><br></p>
+        <div class="thumbnail center" style="width: 90%;">
+        <div class="center" style="width: 95%;">
+        <p><br></p>
         <p style="white-space: pre-line;">{{ $barang->desc }}</p>
+        <p><br></p>
         </div>
-        <br>
-        <div class="thumbnail">
+        </div>
+        </div>        
+        <div class="thumbnail center" style="width: 45%;">
         <h6>Posted by {{\App\User::find($barang->id_user)['name']}} at {{$barang->created_at->format('D M, d Y \a\t h:i A')}}</h6>
         </center>
         </div>

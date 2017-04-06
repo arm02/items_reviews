@@ -7,6 +7,13 @@
     @endsection
 
 @section('content')
+<style>
+.required label:after {
+    color: #e32;
+    content: ' *';
+    display:inline;
+}
+</style>
    
   <div class="page-header">
         <h1>&nbsp;&nbsp;&nbsp;Settings</h1>
@@ -52,10 +59,10 @@
   </div>
 </div>  
 
-<div class="form-group">
+<div class="form-group required">
   <label class="col-md-4 control-label" for="ProductName">Born Palace</label>  
   <div class="col-md-5">
-  <input id="tempattanggallahir" name="tempattanggallahir" type="text" placeholder="" class="form-control input-md" value="{{Auth::user()->tempattanggallahir}}">
+  <input id="tempattanggallahir" name="tempattanggallahir" type="text" placeholder="" class="form-control input-md" value="{{Auth::user()->tempattanggallahir}}" required>
     
   </div>
 </div>
@@ -70,11 +77,11 @@
 </div>
 
 <!-- Text input-->
-<div class="form-group">
+<div class="form-group required">
   <label class="col-md-4 control-label" for="FeaturesOne">Age</label>  
   <div class="col-md-5">
   <input id="umur" name="umur" 
-  type="text" placeholder="" class="form-control input-md" value="{{Auth::user()->umur}}">
+  type="text" placeholder="" class="form-control input-md" value="{{Auth::user()->umur}}" required>
     
   </div>
 </div>
@@ -85,7 +92,6 @@
   <div class="col-md-5">
   <input id="alamat" name="alamat" 
   type="text" placeholder="" class="form-control input-md" value="{{Auth::user()->alamat}}">
-    
   </div>
 </div>
 
@@ -99,10 +105,10 @@
 </div>
 
 <!-- Text input-->
-<div class="form-group">
+<div class="form-group required">
   <label class="col-md-4 control-label" for="AccountFee">Phone Number</label>  
   <div class="col-md-5">
-  <input id="no_telp" name="no_telp" type="text" placeholder="" class="form-control input-md" value="{{Auth::user()->no_telp}}">
+  <input id="no_telp" name="no_telp" type="text" placeholder="" class="form-control input-md" value="{{Auth::user()->no_telp}}" required>
     
   </div>
 </div>
