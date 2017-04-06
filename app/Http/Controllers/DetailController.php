@@ -28,6 +28,11 @@ class DetailController extends Controller
     return view('barang/all', compact('hasil', 'search','cat'));
 
   }
+  public function category(){
+
+    $data['category'] = \App\Category::paginate(16);
+    return view('welcome')->with($data);
+  }
 
   public function all()
   {

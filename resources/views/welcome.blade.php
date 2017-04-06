@@ -65,19 +65,9 @@
                        <div class="input-group"><br>
                          <select class="btn btn-primary" name="category" required>
                            <option value="">- Cari online shop -</option>
-                           <option value="tokopedia">Tokopedia</option>
-                           <option value="bukalapak">Bukalapak</option>
-                           <option value="lazada">Lazada.co.id</option>
-                           <option value="mataharimall">Mataharimall.com</option>
-                           <option value="blibli">Blibli.com</option>
-                           <option value="zalora">Zalora.co.id</option>
-                           <option value="kaskus">Kaskus.co.id</option>
-                           <option value="bhinneka">Bhinneka.com</option>
-                           <option value="elevenia">Elevenia.co.id</option>
-                           <option value="blanja">Blanja.com</option>
-                           <option value="qoo10">Qoo10.co.id</option>
-                           <option value="Shopee">Shopee.co.id</option>
-                           <option value="duniahalal">Duniahalal.com</option>
+                           @foreach($category as $data)
+                           <option value="{{ $data->nama_category }}  "> {{ $data->nama_category }}</option>
+                           @endforeach
                          </select>
                        </div>
                      </center>

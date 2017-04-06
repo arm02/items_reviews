@@ -32,6 +32,7 @@ Route::get('/images/{filename}', function ($filename)
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/','DetailController@category');
 Route::get('/barang',function ()
 {
 	return redirect(url('/barang/list'));
