@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
             $table->text('pekerjaan')->nullable();
             $table->integer('no_telp')->nullable();
             $table->text('informasi')->nullable();
-            $table->string('sampul')->nullable();
+            $table->string('sampul')->default('user.png');
             $table->rememberToken();
             $table->timestamps();
         });
