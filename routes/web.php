@@ -32,19 +32,22 @@ Route::get('/images/{filename}', function ($filename)
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/','DetailController@category');
+Route::get('/barang',function ()
+{
+	return redirect(url('/barang/list'));
+});
 Route::get('/home', 'HomeController@index');
 Route::get('/search', 'DetailController@search');
 Route::get('/barang/list', 'BarangController@index');
 Route::get('/barang/beranda' , 'DetailController@all');
-Route::get('{id}','DetailController@detail');
+Route::get('item-{id}','DetailController@detail');
 
 Route::get('/logout',function ()
 {
 	Auth::logout();
 	return redirect(url('/login'));
 });
-
 Route::post('/barang/save','BarangController@savelagi');
 Route::get('/barang/add','BarangController@add');
 Route::get('/barang/edit/{id}','BarangController@edit');

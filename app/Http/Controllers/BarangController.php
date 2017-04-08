@@ -11,7 +11,7 @@ use Auth;
 
 class BarangController extends Controller
 {
-    
+
 
       public function __construct()
     {
@@ -26,12 +26,15 @@ class BarangController extends Controller
 
       public function add()
     {
-      return view('barang.add');
+      $data['category'] = \App\Category::paginate(16);
+      return view('barang.add')->with($data);
     }
 
         public function edit($id)
     {
       $data['barang']=\App\Barang::find($id);
+      if (!$data['barang']){ return redirect(url('/barang/list')); }
+      if (Auth::user()->id != $data['barang']->id_user){ return redirect(url('/barang/list')); }
       return view('barang.edit')->with($data);
 
     }
@@ -66,14 +69,6 @@ class BarangController extends Controller
 
       $files = Input::file('sampul');
       foreach($files as $sampul) {
-
-        // $destinationPath = 'sampul';
-
-        // if(!is_dir($destinationPath)){
-        //   File::makeDirectory(storage_path().'/'.$destinationPath,0777,true);
-        // }
-
-        //njjn
         $sampul_cek = date("YmdHis").uniqid()."."
         .$sampul->getClientOriginalExtension();
 
@@ -87,7 +82,7 @@ class BarangController extends Controller
           ]);
 
     }
-  } 
+  }
   return redirect(url('barang/list'));
   }
 
@@ -101,13 +96,14 @@ class BarangController extends Controller
       $a->penjual = Input::get('penjual');
       $a->harga = Input::get('harga');
       $a->kondisi = Input::get('kondisi');
-        if(Input::hasFile('sampul')){
-            $sampul = date("YmdHis")
+      $a->desc = Input::get('desc');
+        if(Input::hasFile('photo_header')){
+            $photo_header = date("YmdHis")
             .uniqid()
             ."."
-            .Input::file('sampul')->getClientOriginalExtension();
-            Input::file('sampul')->move(storage_path('sampul'),$sampul);
-            $a->sampul = $sampul;
+            .Input::file('photo_header')->getClientOriginalExtension();
+            Input::file('photo_header')->move(storage_path('sampul'),$photo_header);
+            $a->photo_header = $photo_header;
         }
       $a->save();
       return redirect(url('barang/list'));
@@ -116,6 +112,8 @@ class BarangController extends Controller
       public function delete($id)
     {
       $a = \App\Barang::find($id);
+      if (!$a){ return redirect(url('/barang/list')); }
+      if (Auth::user()->id != $a->id_user){ return redirect(url('/barang/list')); }
       $a->delete();
 
       return redirect(url('barang/list'));
@@ -130,14 +128,14 @@ class BarangController extends Controller
         $a->sampul_user = Auth::user()->sampul;
         $a->save();
         $key = \App\Barang::find(Input::get('id_artikel'));
-        return  redirect(url($key->slug));
-            
-    }   
+        return  redirect(url('item-'.$key->id));
+
+    }
     public function hapuskomentar($id)
     {
         $a = \App\komentar::find($id);
         $key = \App\Barang::find($a->id_artikel);
         $a->delete();
-        return redirect(url($key->slug));  
+        return redirect(url($key->slug));
     }
 }
