@@ -15,15 +15,13 @@
   <form action={{ url('search') }} method="GET" class="navbar-form navbar-left">
     <div class="input-group">
       <div class="input-group-btn">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li><a href="#">Loremmm</a></li>
-          <li><a href="#">ipsuccsm</a></li>
-          <li><a href="#">dolor</a></li>
-          <li><a href="#">Lorem</a></li>
-          <li role="separator" class="divider"></li>
-          <li><a href="#">amet</a></li>
-        </ul>
+       <select class="btn btn-default" style="height: 34px;" name="category" required>
+       <option value="search">All Categories</option>
+        @foreach($category as $data)
+          <option value="{{ $data->nama_category }}">{{ $data->nama_category }}
+          </option>
+          @endforeach
+        </select>
       </div>
       <input type="text" name="q" class="form-control" value="" required placeholder="Search">
     </div>

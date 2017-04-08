@@ -34,13 +34,13 @@ class DetailController extends Controller
     $data['category'] = \App\Category::paginate(16);
     return view('welcome')->with($data);
   }
-
   public function all()
   {
     $data['barang'] = \App\Barang::paginate(16);
-    return view('barang.all')->with($data);
-    
+    $data['category'] = \App\Category::paginate(16);
+    return view('barang.all')->with($data);  
   }
+
 
 
 }

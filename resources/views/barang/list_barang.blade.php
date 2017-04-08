@@ -47,7 +47,7 @@ a {
 						<td>{{$key->penjual}}</td>
 						<td>{{$key->harga}}</td>
 						<td>{{$key->kondisi}}</td>
-						<td>{{substr(strip_tags($key->desc),0,100)}}&nbsp;...</td>
+						<td>{{substr(strip_tags($key->desc),0,70)}}&nbsp;...</td>
 
 						<div class="btn-group" role="group">
 						<td align="center">

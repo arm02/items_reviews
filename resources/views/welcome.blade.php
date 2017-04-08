@@ -7,32 +7,18 @@
     @endsection
 
     @section('content')
-    <style type="text/css">
-    .center {
-    margin: auto;
-    width: 50%;
-    padding: 10px;
-}
-.hafizh {
-  width: 960px;
-  margin:0 auto;
-line-height: 1.4em;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-@media only screen and (max-width: 479px){
-    .hafizh { width: 90%; }
-}
-    </style>
     <div class="container">
     <div class="row">
     <main>
-    <div class="hafizh col-md-12">
+    <div class="col-md-12">
+    <br>
+    <br>
+    <br>
+    <br>
     <center>
     <img src="{{url('images/google-web-search-xxl.png')}}" width="200" height="">
     </center>
+    <br>
 
 
   <!-- <form action={{ url('search') }} method="GET" class="form-signin">
@@ -60,23 +46,25 @@ line-height: 1.4em;
       </form>
       </div>
       </div>
-      </div> -->      
+      </div> -->    
+                  <center>  
                  <form action="{{ url('search') }}" method="GET" class="form-signin">
-                   <div class="center" style="width:65%; margin:0 auto;">
-                     <center>                       
-                       <div style="display: inline-flex;" class="input-group col-md-12">                        
-                       <select class="btn btn-primary pull-left" name="category" required>
-                           <option class="btn-primary" value="search">All Categories</option>
-                           @foreach($category as $data)
-                           <option class="btn-primary" value="{{ $data->nama_category }}  "> {{ $data->nama_category }}</option>
-                           @endforeach
-                         </select>                                   
-                         <input type="text" name="query" class="form-control" placeholder="Search Here" required autofocus >
-                       </div>                        
+                      <div class="input-group" style="width: 50%">
+                        <div class="input-group-btn">                     
+                 <select class="btn btn-default" style="height: 34px;" name="category" required>
+                    <option value="search">All Categories</option>
+                  @foreach($category as $data)
+                    <option value="{{ $data->nama_category }}">{{ $data->nama_category }}
+                    </option>
+                    @endforeach
+                  </select>
+                </div>
+                <input type="text" name="query" class="form-control" value="" required placeholder="Search">
+              </div>                      
                        <p></p>
                        <button class="btn btn-lg btn-primary" type="submit">Search</button>
                      </center>                   
-                 </div>
+                 
                  </form>
                  </div>
                  </main>
