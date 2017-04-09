@@ -112,12 +112,21 @@ class BarangController extends Controller
       public function delete($id)
     {
       $a = \App\Barang::find($id);
+      Image::where('id_barang')->delete();
       if (!$a){ return redirect(url('/barang/list')); }
       if (Auth::user()->id != $a->id_user){ return redirect(url('/barang/list')); }
       $a->delete();
-
       return redirect(url('barang/list'));
     }
+    
+
+/*    public function dele($id)
+    {
+      $b = Image::where('id_barang')->get(['id']);
+      Image::destroy($b->toArray());
+       return redirect(url('barang/list'));
+    }*/
+
 
          public function komentar()
     {

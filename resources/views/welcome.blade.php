@@ -49,7 +49,7 @@
       </div> -->    
                   <center>  
                  <form action="{{ url('search') }}" method="GET" class="form-signin">
-                      <div class="input-group" style="width: 50%">
+                      <div class="input-group" style="width: 40%">
                         <div class="input-group-btn">                     
                  <select class="btn btn-default" style="height: 34px;" name="category" required>
                     <option value="search">All Categories</option>

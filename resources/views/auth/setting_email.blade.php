@@ -16,11 +16,11 @@
         
     <div class="col-sm-3">
       <div class="list-group-item">
-       <a href="/user/{{$user->id}}/edit" class="list-group-item"><img src="http://www.freeiconspng.com/uploads/am-a-19-year-old-multimedia-artist-student-from-manila--21.png" height="20" width="20" border="1px">
+       <a href="/user/{{$user->id}}/edit" class="list-group-item"><img src="{{url('images/profile.png')}}" height="20" width="20" border="1px">
               &nbsp;&nbsp;Profile Users
        </a>
          <p></p>
-      <a href="/user/{{$user->id}}/change-email" class="list-group-item active"><img src="http://www.freeiconspng.com/uploads/iconmonstr-email-4-icon-27.png" height="20" width="20" border="1px">&nbsp;&nbsp;Email Users</a>   
+      <a href="/user/{{$user->id}}/change-email" class="list-group-item active"><img src="{{url('images/email.png')}}" height="20" width="20" border="1px">&nbsp;&nbsp;Email Users</a>   
           <p></p>    
       </div>
     </div><!-- /.col-sm-4 --> 

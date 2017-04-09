@@ -15,6 +15,12 @@
 
 Route::auth();
 
+Route::get('/logout',function ()
+{
+	Auth::logout();
+	return redirect(url('/login'));
+});
+
 Route::get('/images/{filename}', function ($filename)
 {
 	$path = storage_path('sampul') . '/' . $filename;
@@ -43,16 +49,12 @@ Route::get('/barang/list', 'BarangController@index');
 Route::get('/barang/beranda' , 'DetailController@all');
 Route::get('item-{id}','DetailController@detail');
 
-Route::get('/logout',function ()
-{
-	Auth::logout();
-	return redirect(url('/login'));
-});
 Route::post('/barang/save','BarangController@savelagi');
 Route::get('/barang/add','BarangController@add');
 Route::get('/barang/edit/{id}','BarangController@edit');
 Route::post('/barang/update','BarangController@update');
 Route::get('/barang/delete/{id}','BarangController@delete');
+/*Route::get('/barang/delete/{id}','BarangController@dele');*/
 Route::post('/komentar','BarangController@komentar');
 Route::get('/hapuskomentar/{id}','BarangController@hapuskomentar');
 

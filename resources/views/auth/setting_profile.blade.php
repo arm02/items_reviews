@@ -2,18 +2,20 @@
 
     @section('header')
 
-        <title>Laravel &raquo; Home</title>     
+        <title>Laravel &raquo; Home</title>
 
-    @endsection
-
-@section('content')
 <style>
 .required label:after {
     color: #e32;
     content: ' *';
     display:inline;
 }
-</style>
+</style>     
+
+    @endsection
+
+@section('content')
+
    
   <div class="page-header">
         <h1>&nbsp;&nbsp;&nbsp;Settings</h1>
@@ -22,11 +24,11 @@
         
          <div class="col-sm-3">
       <div class="list-group-item">
-       <a href="/user/{{$user->id}}/edit" class="list-group-item active"><img src="http://www.freeiconspng.com/uploads/am-a-19-year-old-multimedia-artist-student-from-manila--21.png" height="20" width="20" border="1px">
+       <a href="/user/{{$user->id}}/edit" class="list-group-item active"><img src="{{url('images/profile.png')}}" height="20" width="20" border="1px">
               &nbsp;&nbsp;Profile Users
        </a>
          <p></p>
-      <a href="/user/{{$user->id}}/change-email" class="list-group-item"><img src="http://www.freeiconspng.com/uploads/iconmonstr-email-4-icon-27.png" height="20" width="20" border="1px">&nbsp;&nbsp;Email Users</a>   
+      <a href="/user/{{$user->id}}/change-email" class="list-group-item"><img src="{{url('images/email.png')}}" height="20" width="20" border="1px">&nbsp;&nbsp;Email Users</a>   
           <p></p>  
       </div>
     </div><!-- /.col-sm-4 --> 
@@ -62,7 +64,7 @@
 <div class="form-group required">
   <label class="col-md-4 control-label" for="ProductName">Born Palace</label>  
   <div class="col-md-5">
-  <input id="tempattanggallahir" name="tempattanggallahir" type="text" placeholder="" class="form-control input-md" value="{{Auth::user()->tempattanggallahir}}" required>
+  <input id="tempattanggallahir" name="tempattanggallahir" type="date" placeholder="" class="form-control input-md" value="{{Auth::user()->tempattanggallahir}}" required>
     
   </div>
 </div>
@@ -143,6 +145,7 @@
 </div>
 
 </fieldset>
+
 </form>
 
 
