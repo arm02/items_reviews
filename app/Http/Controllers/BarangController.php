@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use File;
+use truncate; 
 use App\Barang;
 use App\Image;
 use Illuminate\Support\Facades\Input;
@@ -118,6 +119,15 @@ class BarangController extends Controller
       $a->delete();
       return redirect(url('barang/list'));
     }
+
+/*    public function truncate($id)
+    {
+      $a = \App\Barang::find($id);
+      if (!$a){ return redirect(url('/barang/list')); }
+      if (Auth::user()->id != $a->id_user){ return redirect(url('/barang/list')); }
+      Barang::truncate($a);
+      return redirect(url('barang/list'));
+    }*/
     
 
 /*    public function dele($id)

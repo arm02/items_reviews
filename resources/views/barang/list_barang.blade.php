@@ -85,7 +85,12 @@ a {
 							class="waves-effect waves-light btn"><button class="btn btn-primary">Add New</button></a></div></td></tr>
 							</thread>
 							</table>
-
+<!-- 							<form  method="post" action="{{url('barang/truncate')}}">
+							      <input type="hidden" name="_token"
+                              value="{{csrf_token()}}">
+							<button>Reset</button>
+							</form> -->
+<!-- asddas -->
 							
 
 				@endsection

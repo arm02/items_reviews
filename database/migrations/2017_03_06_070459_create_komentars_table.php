@@ -17,6 +17,7 @@ class CreateKomentarsTable extends Migration
             $table->increments('id');
             $table->text('isi');
             $table->integer('id_user');
+	        $table->string('sampul_user');
             $table->integer('id_artikel');
             $table->timestamps();
         });
