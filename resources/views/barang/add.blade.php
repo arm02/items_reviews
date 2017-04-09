@@ -3,6 +3,14 @@
     @section('header')
 
         <title>Add&raquo; Items</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+        <style>
+          .thumb {
+            height: 75px;
+            border: 1px solid #000;
+            margin: 10px 5px 0 0;
+          }
+        </style>
 
     @endsection
 
@@ -58,13 +66,14 @@
     </center>
   </div>
   <div class="col-md-12">
-  <div class="col-md-4">
+  <div class="col-md-5">
       <div class="form-group">
         <label for="email">Photo Header</label>
           <div class="btn">
               <input name="photo_header[]" id="photo_header" type="file" accept=".PNG, .JPEG, .JPG" class="form-control" required oninvalid="this.setCustomValidity('Select one Image')"
-                oninput="setCustomValidity('')">
-          </div>
+                oninput="setCustomValidity('')"><center><p></p>
+                <img class="thumbnail" style="display: none;" src="" id="profile-img-tag" width="200px" /></center>
+          </div>            
           </div>
           </div>
 <div class="col-md-4">
@@ -73,24 +82,66 @@
             <div class="btn">
                 <input multiple="true" name="sampul[]" id="sampul" type="file" accept=".PNG, .JPEG, .JPG" class="form-control" required oninvalid="this.setCustomValidity('Select one Image')"
                   oninput="setCustomValidity('')">
+                  <output id="list"></output>
             </div>
         </div>
         </div>
-<div class="col-md-4">
-    <div class="row">
-      <div class="">
+        <div class="pull-right">
       <input type="hidden" name="_token"
               value="{{csrf_token()}}">
               <p><br></p>
-        <button class="btn btn-md btn-primary btn-block" type="submit">Add</button>
-
-      </div>
-    </div>
-    </div>
-    </div>
+        <button style="width: 100%;" class="btn btn-md btn-primary btn-block" type="submit">Add</button><p></p>
+        </div>
+    </div>  
   </form>
   </div>
- 
+ <script type="text/javascript">
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#profile-img-tag').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+            document.getElementById('profile-img-tag').style.display = "block";
+
+        }
+    }
+    $("#photo_header").change(function(){
+        readURL(this);
+    });
+</script>
+<script>
+  function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+
+      var reader = new FileReader();
+
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          var span = document.createElement('span');
+          span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                            '" title="', escape(theFile.name), '"/>'].join('');
+          document.getElementById('list').insertBefore(span, null);
+        };
+      })(f);
+
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+    }
+  }
+
+  document.getElementById('sampul').addEventListener('change', handleFileSelect, false);
+</script>
 @endsection
-
-
