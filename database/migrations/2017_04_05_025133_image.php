@@ -17,6 +17,7 @@ class Image extends Migration
             $table->increments('id');
             $table->string('lokasi_file');
             $table->string('id_barang');
+            $table->string('id_user');
             $table->timestamps();
         });
     }
