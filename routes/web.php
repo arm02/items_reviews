@@ -49,8 +49,8 @@ Route::get('/barang/list', 'BarangController@index');
 Route::get('/barang/beranda' , 'DetailController@all');
 Route::get('item-{id}','DetailController@detail');
 
-Route::post('/barang/save','BarangController@savelagi');/*
-Route::post('/barang/reset','BarangController@truncate');*/
+Route::post('/barang/save','BarangController@savelagi');
+Route::get('/barang/reset/{id}','BarangController@truncate');
 Route::get('/barang/add','BarangController@add');
 Route::get('/barang/edit/{id}','BarangController@edit');
 Route::post('/barang/update','BarangController@update');

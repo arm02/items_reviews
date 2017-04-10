@@ -50,14 +50,9 @@
                   <center>  
                  <form action="{{ url('search') }}" method="GET" class="form-signin">
                       <div class="input-group" style="width: 40%">
-                        <div class="input-group-btn">                     
-<<<<<<< HEAD
+                        <div class="input-group-btn">      
                  <select class="btn" style="height: 34px;" name="category" required>
-                    <option value="search">All Categories</option>
-=======
-                 <select class="btn btn-default" style="height: 34px;" name="category" required>
                       <option value="all">All Categories</option>
->>>>>>> 50accbad3c112569b5ca49b1cee3b466ab449cd9
                   @foreach($category as $data)
                     <option value="{{ $data->nama_category }}">{{ $data->nama_category }}
                     </option>

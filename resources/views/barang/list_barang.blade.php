@@ -88,25 +88,21 @@ a {
 
   <hr>
 
-						<div class="pull-right">            
-            <div class="col-md-5" id="btnadd">							
-              <button onclick="add()" class="waves-effect waves-light btn btn-primary">Add New</button></div>
-              <div class="col-md-4" id="btncancel" style="display: none;">
-              <button class="btn btn-primary" onclick="cancel()">Cancel</button>              
-              </div>
-              <div class="col-md-3">							
-							<button class="waves-effect waves-light btn btn-primary">Reset Data</button>
-              </div>							
-              </div>
-
-
-
-
-<!-- 							<form  method="post" action="{{url('barang/list')}}">
-							      <input type="hidden" name="_token"
+						<div class="pull-right">
+							<div class="col-md-5" id="btnadd">
+							<button onclick="add()" class="btn btn-primary">Add New</button></div>
+							<div class="col-md-4" id="btncancel" style="display: none;">
+							<button class="btn btn-primary" onclick="cancel()">Cancel</button>
+							</div>
+							<div class="col-md-4">
+							<form  method="get" action="/barang/reset/{{Auth::user()->id}}">
+							  <input type="hidden" name="_token"
                               value="{{csrf_token()}}">
-							</form> -->
-<!-- asddas -->
+                              <button class="btn btn-primary waves-effect waves-light btn" onclick="return confirm('Are you sure to reset data ?')">Reset Data</button>
+							</div>
+							</form>
+							</div>
+							</div>
 							
 <div id="add" style="display: none;">
 <div class="container">
@@ -161,8 +157,8 @@ a {
   <div class="col-md-12">
   <div class="col-md-5">
       <div class="form-group">
-        <label for="email">Photo Header</label>
           <div class="btn">
+        <label for="email">Photo Header</label>
               <input name="photo_header[]" id="photo_header" type="file" accept=".PNG, .JPEG, .JPG" class="form-control" required oninvalid="this.setCustomValidity('Select one Image')"
                 oninput="setCustomValidity('')"><center><p></p>
                 <img class="thumbnail" style="display: none;" src="" id="profile-img-tag" width="200px" /></center>
@@ -171,8 +167,8 @@ a {
           </div>
 <div class="col-md-4">
       <div class="form-group">
-          <label for="email">Photo Detail</label>
             <div class="btn">
+          <label for="email">Photo Detail</label>
                 <input multiple="true" name="sampul[]" id="sampul" type="file" accept=".PNG, .JPEG, .JPG" class="form-control" required oninvalid="this.setCustomValidity('Select one Image')"
                   oninput="setCustomValidity('')">
                   <output id="list"></output>
@@ -243,6 +239,7 @@ a {
    document.getElementById('add').style.display = "block";   
    document.getElementById('btnadd').style.display = "none";
    document.getElementById('btncancel').style.display = "block";
+   window.location.href='#add';
 }
               function cancel() {
    document.getElementById('add').style.display = "none";   

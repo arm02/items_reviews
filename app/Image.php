@@ -10,6 +10,7 @@ class Image extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
     'lokasi_file',
-    'id_barang'
+    'id_barang',
+    'id_user'
     ];
 }

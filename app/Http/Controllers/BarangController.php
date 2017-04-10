@@ -22,7 +22,7 @@ class BarangController extends Controller
       public function index()
     {
       $data['barang'] = \App\Barang::where('id_user',Auth::user()->id)->paginate(1000);
-      $data['category'] = \App\Category::paginate(16);
+       $data['category'] = \App\Category::paginate(16);
       return view('barang.list_barang')->with($data);
     }
 
@@ -82,7 +82,8 @@ class BarangController extends Controller
 
         Image::create([
           'id_barang' => $cek->id,
-          'lokasi_file' => $sampul_cek
+          'lokasi_file' => $sampul_cek,
+          'id_user' => Auth::user()->id
           ]);
 
     }
@@ -127,17 +128,13 @@ class BarangController extends Controller
     }
 
 
-/*    public function truncate()
+    public function truncate($id)
     {
-      $a a= \App\Barang::find('id');
-      if (!$a){ return redirect(url('/barang/list')); }
-      if (Auth::user()->id != $a->id_user){ return redirect(url('/barang/list')); }
-      $cek = Barang::orderby('id','desc')->first();
-      $b = Barang::whereIdUser($cek->id_user);
-      $b->truncate();
+      Image::whereIdUser(Auth::user()->id)->delete();
+      Barang::whereIdUser(Auth::user()->id)->delete();
       return redirect(url('barang/list'));
     }
-    */
+    
 
 
 
