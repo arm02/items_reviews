@@ -128,7 +128,7 @@ class BarangController extends Controller
 
 /*    public function truncate()
     {
-      $a = \App\Barang::find('id');
+      $a a= \App\Barang::find('id');
       if (!$a){ return redirect(url('/barang/list')); }
       if (Auth::user()->id != $a->id_user){ return redirect(url('/barang/list')); }
       $cek = Barang::orderby('id','desc')->first();
