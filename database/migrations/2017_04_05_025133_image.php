@@ -23,7 +23,7 @@ class Image extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * Reverse the migrationss.
      *
      * @return void
      */
