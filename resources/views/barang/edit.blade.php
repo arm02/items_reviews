@@ -92,7 +92,9 @@
 
 
       <br>
+      <div class="col-md-3 center pull-right">            
     <button class="btn btn-lg btn-primary btn-block" type="submit">Update</button>
+    </div>
           <input type="hidden" name="_token" value="{{csrf_token()}}">
           <input type="hidden" name="id" value="{{$barang->id}}">
   </form>
