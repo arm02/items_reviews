@@ -65,34 +65,39 @@
     <div>
     </center>
   </div>
+  <div align="center">
   <div class="col-md-12">
   <div class="col-md-5">
       <div class="form-group">
         <label for="email">Photo Header</label>
-          <div class="btn">
+          <!-- <div class="btn"> -->
               <input name="photo_header[]" id="photo_header" type="file" accept=".PNG, .JPEG, .JPG" class="form-control" required oninvalid="this.setCustomValidity('Select one Image')"
                 oninput="setCustomValidity('')"><center><p></p>
                 <img class="thumbnail" style="display: none;" src="" id="profile-img-tag" width="200px" /></center>
-          </div>            
+          <!-- </div>  -->           
           </div>
           </div>
-<div class="col-md-4">
+<div class="col-md-5">
+          <img class="thumbnail" style="display: none;" src="" id="profile-img-tag" 
+          width="200px" />
       <div class="form-group">
           <label for="email">Photo Detail</label>
-            <div class="btn">
+            <!-- <div class="btn"> -->
                 <input multiple="true" name="sampul[]" id="sampul" type="file" accept=".PNG, .JPEG, .JPG" class="form-control" required oninvalid="this.setCustomValidity('Select one Image')"
                   oninput="setCustomValidity('')">
                   <output id="list"></output>
-            </div>
+            <!-- </div> -->
         </div>
         </div>
-        <div class="pull-right">
+    </div>  
+    </div>
       <input type="hidden" name="_token"
               value="{{csrf_token()}}">
               <p><br></p>
-        <button style="width: 100%;" class="btn btn-md btn-primary btn-block" type="submit">Add</button><p></p>
-        </div>
-    </div>  
+
+              <center>
+        <button style="width: 200px;" class="btn btn-md btn-primary btn-block" type="submit">Add</button><p></p>
+        </center>
   </form>
   </div>
  <script type="text/javascript">

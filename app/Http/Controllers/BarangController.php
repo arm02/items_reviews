@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use File;
+use truncate; 
 use App\Barang;
 use App\Image;
 use Illuminate\Support\Facades\Input;
@@ -33,6 +34,8 @@ class BarangController extends Controller
         public function edit($id)
     {
       $data['barang']=\App\Barang::find($id);
+      $cek = Barang::orderby('id','desc')->first();
+      $data['image']= Image::whereIdBarang($cek->id);
       if (!$data['barang']){ return redirect(url('/barang/list')); }
       if (Auth::user()->id != $data['barang']->id_user){ return redirect(url('/barang/list')); }
       return view('barang.edit')->with($data);
@@ -89,6 +92,7 @@ class BarangController extends Controller
     public function update()
     {
 
+
       $a = \App\Barang::find(Input::get('id'));
       $a->slug = str_slug(Input::get('nama_barang'));
       $a->nama_barang = Input::get('nama_barang');
@@ -97,27 +101,44 @@ class BarangController extends Controller
       $a->harga = Input::get('harga');
       $a->kondisi = Input::get('kondisi');
       $a->desc = Input::get('desc');
-        if(Input::hasFile('photo_header')){
-            $photo_header = date("YmdHis")
-            .uniqid()
-            ."."
-            .Input::file('photo_header')->getClientOriginalExtension();
-            Input::file('photo_header')->move(storage_path('sampul'),$photo_header);
-            $a->photo_header = $photo_header;
-        }
+          if (Input::hasFile('sampul')) {
+        $files = Input::file('sampul');
+         foreach($files as $sampul) {
+        $sampul_header = date("YmdHis").uniqid()."."
+        .$sampul->getClientOriginalExtension();
+        $sampul->move(storage_path('sampul'), $sampul_header);
+      $a->photo_header = $sampul_header;
+    }
+  }
       $a->save();
       return redirect(url('barang/list'));
-    }
+}
 
       public function delete($id)
     {
       $a = \App\Barang::find($id);
       if (!$a){ return redirect(url('/barang/list')); }
       if (Auth::user()->id != $a->id_user){ return redirect(url('/barang/list')); }
+      $cek = Barang::orderby('id','desc')->first();
+      Image::whereIdBarang($cek->id)->delete();
       $a->delete();
-
       return redirect(url('barang/list'));
     }
+
+
+/*    public function truncate()
+    {
+      $a a= \App\Barang::find('id');
+      if (!$a){ return redirect(url('/barang/list')); }
+      if (Auth::user()->id != $a->id_user){ return redirect(url('/barang/list')); }
+      $cek = Barang::orderby('id','desc')->first();
+      $b = Barang::whereIdUser($cek->id_user);
+      $b->truncate();
+      return redirect(url('barang/list'));
+    }
+    */
+
+
 
          public function komentar()
     {

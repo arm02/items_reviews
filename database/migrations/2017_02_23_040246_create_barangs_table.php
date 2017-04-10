@@ -22,7 +22,7 @@ class CreateBarangsTable extends Migration
             $table->string('penjual');
             $table->string('harga');
             $table->string('kondisi');
-            $table->text('sampul')->nullable();
+            $table->text('photo_header')->nullable();
             $table->text('desc')->nullable();
             $table->timestamps();
         });

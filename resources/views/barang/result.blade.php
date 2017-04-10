@@ -56,7 +56,7 @@
   @if (count($hasil))
   <div class="page-header">
         <div class="alert alert-success" role="alert">Hasil pencarian : <b>{{$search}}</b>
-      @if($search)) di kategori {{ $cat }}</div> @endif
+      @if($search) di kategori {{ $cat }}</div> @endif
   </div><br>
   <!-- ////// -->
   <div class="row">
