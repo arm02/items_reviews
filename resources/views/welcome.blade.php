@@ -52,14 +52,14 @@
                       <div class="input-group" style="width: 40%">
                         <div class="input-group-btn">                     
                  <select class="btn btn-default" style="height: 34px;" name="category" required>
-                    <option value="search">All Categories</option>
+                      <option value="all">All Categories</option>
                   @foreach($category as $data)
                     <option value="{{ $data->nama_category }}">{{ $data->nama_category }}
                     </option>
                     @endforeach
                   </select>
                 </div>
-                <input type="text" name="query" class="form-control" value="" required placeholder="Search">
+                <input type="text" name="views" class="form-control" value="" required placeholder="Search">
               </div>                      
                        <p></p>
                        <button class="btn btn-lg btn-primary" type="submit">Search</button>
