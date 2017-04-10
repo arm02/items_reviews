@@ -22,6 +22,7 @@ class BarangController extends Controller
       public function index()
     {
       $data['barang'] = \App\Barang::where('id_user',Auth::user()->id)->paginate(1000);
+      $data['category'] = \App\Category::paginate(16);
       return view('barang.list_barang')->with($data);
     }
 
