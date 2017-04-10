@@ -50,12 +50,11 @@ Route::get('/barang/beranda' , 'DetailController@all');
 Route::get('item-{id}','DetailController@detail');
 
 Route::post('/barang/save','BarangController@savelagi');/*
-Route::post('/barang/truncate','BarangController@truncate');*/
+Route::post('/barang/reset','BarangController@truncate');*/
 Route::get('/barang/add','BarangController@add');
 Route::get('/barang/edit/{id}','BarangController@edit');
 Route::post('/barang/update','BarangController@update');
 Route::get('/barang/delete/{id}','BarangController@delete');
-/*Route::get('/barang/delete/{id}','BarangController@dele');*/
 Route::post('/komentar','BarangController@komentar');
 Route::get('/hapuskomentar/{id}','BarangController@hapuskomentar');
 

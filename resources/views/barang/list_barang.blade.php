@@ -77,18 +77,23 @@ a {
   @if(sizeof($barang)==0)
   <div style="text-align: center;"><h2>No Data</h2></div>
   @endif
-  <table class="table table-strip">
-    <thread>
-						<tr>
-						<td style="text-align: center;">
-							<div><a href="{{url('barang/add')}}"
-							class="waves-effect waves-light btn"><button class="btn btn-primary">Add New</button></a></div></td></tr>
-							</thread>
-							</table>
-<!-- 							<form  method="post" action="{{url('barang/truncate')}}">
+
+  <hr>
+
+						<div class="pull-right">
+							<div class="col-md-4"><a href="{{url('barang/add')}}"
+							class="waves-effect waves-light btn"><button class="btn btn-primary">Add New</button></a></div>
+							<div class="col-md-3"><a href="{{url('barang/#')}}"
+							class="waves-effect waves-light btn"><button class="btn btn-primary">Reset Data</button></a></div>
+							</div>
+							</div>
+
+
+
+
+<!-- 							<form  method="post" action="{{url('barang/list')}}">
 							      <input type="hidden" name="_token"
                               value="{{csrf_token()}}">
-							<button>Reset</button>
 							</form> -->
 <!-- asddas -->
 							

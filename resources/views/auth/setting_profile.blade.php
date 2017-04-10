@@ -4,13 +4,15 @@
 
         <title>Laravel &raquo; Home</title>
 
-<style>
-.required label:after {
-    color: #e32;
-    content: ' *';
-    display:inline;
-}
-</style>     
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+        <style>
+          .thumb {
+            height: 200px;
+            border: 1px solid #000;
+            margin: 10px 5px 0 0;
+          }
+        </style> 
 
     @endsection
 
@@ -110,7 +112,7 @@
 <div class="form-group required">
   <label class="col-md-4 control-label" for="AccountFee">Phone Number</label>  
   <div class="col-md-5">
-  <input id="no_telp" name="no_telp" type="text" placeholder="" class="form-control input-md" value="{{Auth::user()->no_telp}}" required>
+  <input id="no_telp" name="no_telp" type="text" placeholder="62+" class="form-control input-md" value="{{Auth::user()->no_telp}}" required>
     
   </div>
 </div>
@@ -124,9 +126,11 @@
   </div>
 </div>
 <div class="form-group">
-  <label class="col-md-4 control-label" for="InterestRate">Photo Profile</label>  
+  <label class="col-md-4 control-label" for="InterestRate">Photo Profile</label> 
   <div class="col-md-5">
-  <input id="sampul" name="sampul" type="file" placeholder="" class="form-control input-md" value="{{Auth::user()->sampul}}">
+  <img class="thumbnail" src="{{url('images/'.$user->sampul)}}" id="profile-img-tag" 
+     width="200px" />
+  <input id="sampul" name="sampul" type="file" placeholder="" class="form-control input-md" value="{{Auth::user()->sampul}}"><br>
   </div>
 </div>
  
@@ -149,6 +153,56 @@
 </form>
 
 
+
+<script type="text/javascript">
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#profile-img-tag').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+            document.getElementById('profile-img-tag').style.display = "block";
+
+        }
+    }
+    $("#sampul").change(function(){
+        readURL(this);
+    });
+</script>
+<script>
+  function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+
+      var reader = new FileReader();
+
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          var span = document.createElement('span');
+          span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                            '" title="', escape(theFile.name), '"/>'].join('');
+          document.getElementById('list').insertBefore(span, null);
+        };
+      })(f);
+
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+    }
+  }
+
+  document.getElementById('sampul').addEventListener('change', handleFileSelect, false);
+</script>
 
 @endsection
 
