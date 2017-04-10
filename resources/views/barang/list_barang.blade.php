@@ -83,7 +83,12 @@ a {
   </table>
   </div>
   @if(sizeof($barang)==0)
-  <div style="text-align: center;"><h2>No Data</h2></div>
+  <div style="text-align: center;" id="btnhref">
+  <a href="list#add" onclick="add()"><h5>No Data , Create Your Reviews Now</h5></a>
+  </div>
+  <div style="text-align: center; display: none;" id="btncancelhref">
+  <a href="" onclick="cancel_href()"><h5>No, Thanks</h5></a>
+  </div>
   @endif
 
   <hr>
@@ -98,7 +103,8 @@ a {
 							<form  method="get" action="/barang/reset/{{Auth::user()->id}}">
 							  <input type="hidden" name="_token"
                               value="{{csrf_token()}}">
-                              <button class="btn btn-primary waves-effect waves-light btn" onclick="return confirm('Are you sure to reset data ?')">Reset Data</button>
+                              <button class="btn btn-primary waves-effect waves-light btn" 
+                              onclick="return confirm('Are you sure to reset data ?')">Reset Data</button>
 							</div>
 							</form>
 							</div>
@@ -168,8 +174,8 @@ a {
 <div class="col-md-4">
       <div class="form-group">
             <div class="btn">
-          <label for="email">Photo Detail</label>
-                <input multiple="true" name="sampul[]" id="sampul" type="file" accept=".PNG, .JPEG, .JPG" class="form-control" required oninvalid="this.setCustomValidity('Select one Image')"
+          <label for="email">Photo Detail ( Max 3 Photo )</label>
+                <input multiple="true" name="sampul[]" style="max-width: 350px" id="sampul" type="file" accept=".PNG, .JPEG, .JPG" class="form-control" required oninvalid="this.setCustomValidity('Select one Image')"
                   oninput="setCustomValidity('')">
                   <output id="list"></output>
             </div>
@@ -179,7 +185,7 @@ a {
       <input type="hidden" name="_token"
               value="{{csrf_token()}}">
               <p><br></p>
-        <button id="btnadd" style="width: 100%;" class="btn btn-md btn-primary btn-block" type="submit">Add</button><p></p>
+        <button id="btnadd" style="width: 200px;" class="btn btn-md btn-primary btn-block" type="submit">Add</button><p></p>
         </div>
     </div>  
   </form>
@@ -245,6 +251,12 @@ a {
    document.getElementById('add').style.display = "none";   
    document.getElementById('btnadd').style.display = "block";
    document.getElementById('btncancel').style.display = "none";
+}
+
+           function cancel_href() {
+   document.getElementById('add').style.display = "none";   
+   document.getElementById('btnhref').style.display = "none";
+   document.getElementById('btncancelhref').style.display = "block";
 }
               </script>
 

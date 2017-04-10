@@ -10,8 +10,22 @@
 
                                 <div class="col-sm-4">
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                                 <img src="{{url('images/'.$user->sampul)}}" class="img-circle" width="300" height="300">                            
-                    </div>              
+                                 <img src="{{url('images/'.$user->sampul)}}" class="img-circle" width="300" height="300"> 
+                                <br>
+                                <br>
+                                <br>
+                    <form action="/user/{{$user->id}}/edit">
+                    <center>
+                        <button class="btn btn-primary">Setting Profile</button>
+                        </center>
+                    </form> 
+                    <p></p>
+                    <form action="#">
+                    <center>
+                        <button class="btn btn-primary" onclick="return confirm('Are you sure to delete account {{$user->name}}?')">Delete Account</button>
+                        </center>
+                    </form>       
+                    </div>       
 				
 					<div class="col-sm-8">                                            <div class="panel-body">
                                 <form accept-charset="UTF-8"><input name="_token" type="hidden" value="CrEus3qjiSftRHGjpdSlV9qdqIYSnEX3m7e8MQBx">

@@ -16,9 +16,9 @@
     <div class="input-group">
       <div class="input-group-btn">
        <select class="btn btn-default" style="height: 34px;" name="category" required>
-       <option value="search">All Categories</option>
+       <option value="search" class="btn btn-default">All Categories</option>
         @foreach($category as $data)
-          <option value="{{ $data->nama_category }}">{{ $data->nama_category }}
+          <option value="{{ $data->nama_category }}" class="btn btn-default">{{ $data->nama_category }}
           </option>
           @endforeach
         </select>

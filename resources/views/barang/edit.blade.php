@@ -71,28 +71,40 @@
       <label for="email">Desc</label>
       <textarea type="text" class="form-control" id="email" placeholder="Desc" name="desc">{{$barang->desc}}</textarea>
        </div>
-
-            <label for="email">Photo Header</label>
+       <div class="form-group">
+               <div class="col-md-4">
+            <label for="email">Photo Header</label><p></p>
          <img class="thumbnail" src="{{url('images/'.$barang->photo_header)}}" id="profile-img-tag" width="200px" />
-        <div class="right">
-          <div class="btn">
-              <input name="sampul[]" id="sampul" type="file">
+        <div class="right"><p>
+          <div class="btn btn btn-default">
+              <input name="sampul[]" id="photo_header" type="file">
           </div>
       </div>
+      </div>
 
-<!--           <label for="email">Photo Detail</label>
-          @foreach($image as $key)
-         <img class="thumbnail" src="{{url('images/'.$key->lokasi_file)}}" id="profile-img-tag" width="200px" />
-         @endforeach -->
-<!--         <div class="right">
-          <div class="btn">
-              <input name="sampul[]" id="sampul" type="file">
+      <div class="form-group">
+        <label>Photo Detail</label><p></p>
+        <?php
+            $cek = App\Image::where('id_barang', $barang->id)->get();
+          ?>
+        @foreach($cek as $value)
+        <img  style="width: 200px;" class ="thumbnail col-md-5" 
+        src = "{{ url('images/'.$value->lokasi_file) }}">
+        @endforeach
+          <div class="btn btn-default col-md-4">
+              <input name="sampu2l[]" multiple="true" accept=".PNG, .JPEG, .JPG" id="sampul2" 
+              type="file">
           </div>
-      </div> -->
+      <div class="">
+        <output id="list" class="col-md-3 center"></output>
+        </div>
+   </div>
+   </div>
 
 
-      <br>
       <div class="col-md-3 center pull-right">            
+      <br>
+      <br>
     <button class="btn btn-lg btn-primary btn-block" type="submit">Update</button>
     </div>
           <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -114,7 +126,7 @@
 
         }
     }
-    $("#sampul").change(function(){
+    $("#photo_header").change(function(){
         readURL(this);
     });
 </script>
@@ -148,7 +160,7 @@
     }
   }
 
-  document.getElementById('sampul').addEventListener('change', handleFileSelect, false);
+  document.getElementById('sampul2').addEventListener('change', handleFileSelect, false);
 </script>
  
 @endsection

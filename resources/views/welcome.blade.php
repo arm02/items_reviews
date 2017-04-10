@@ -51,18 +51,21 @@
                  <form action="{{ url('search') }}" method="GET" class="form-signin">
                       <div class="input-group" style="width: 40%">
                         <div class="input-group-btn">      
-                 <select class="btn" style="height: 34px;" name="category" required>
-                      <option value="all">All Categories</option>
+                 <select class="btn btn-default" style="height: 34px;" name="category" required>
+                      <option class="btn btn-default" value="all">All Categories</option>
                   @foreach($category as $data)
-                    <option value="{{ $data->nama_category }}">{{ $data->nama_category }}
+                    <option class="btn btn-default" value="{{ $data->nama_category }}">{{ $data->nama_category }}
                     </option>
                     @endforeach
                   </select>
                 </div>
-                <input type="text" name="views" class="form-control" value="" required placeholder="Search">
+                <input type="text" name="views" class="form-control" value="" 
+                 placeholder="Search" 
+                 required oninvalid="this.setCustomValidity('Insert Keyword Here')"
+                  oninput="setCustomValidity('')">
               </div>                      
                        <p></p>
-                       <button class="btn btn-lg btn-primary" type="submit">Search</button>
+                       <button class="btn btn-lg btn-primary glyphicon glyphicon-search" style="width: 100px;" type="submit"></button>
                      </center>                   
                  
                  </form>

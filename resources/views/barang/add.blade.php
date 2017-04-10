@@ -81,7 +81,7 @@
           <img class="thumbnail" style="display: none;" src="" id="profile-img-tag" 
           width="200px" />
       <div class="form-group">
-          <label for="email">Photo Detail</label>
+          <label for="email">Photo Detail ( Max 3 Photo )</label>
             <!-- <div class="btn"> -->
                 <input multiple="true" name="sampul[]" id="sampul" type="file" accept=".PNG, .JPEG, .JPG" class="form-control" required oninvalid="this.setCustomValidity('Select one Image')"
                   oninput="setCustomValidity('')">

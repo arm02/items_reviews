@@ -36,7 +36,7 @@ class BarangController extends Controller
     {
       $data['barang']=\App\Barang::find($id);
       $cek = Barang::orderby('id','desc')->first();
-      $data['image']= Image::whereIdBarang($cek->id);
+      $data['image']= Image::whereIdBarang($cek->id)->get();
       if (!$data['barang']){ return redirect(url('/barang/list')); }
       if (Auth::user()->id != $data['barang']->id_user){ return redirect(url('/barang/list')); }
       return view('barang.edit')->with($data);
