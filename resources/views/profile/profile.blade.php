@@ -26,7 +26,7 @@
                         </center>
                     </form>       
                     </div>       
-				
+				<!-- dsasda -->
 					<div class="col-sm-8"> 
                     <div class="panel-body">
                                 <form accept-charset="UTF-8"><input name="_token" type="hidden" value="CrEus3qjiSftRHGjpdSlV9qdqIYSnEX3m7e8MQBx">
