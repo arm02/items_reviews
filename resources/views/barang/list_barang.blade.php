@@ -116,13 +116,13 @@ a {
   <form class="col-sm-12" method="post" action="{{url('barang/save')}}" 
   enctype="multipart/form-data">
     <div class="form-group">
-      <label for="name">Items Name</label>
+      <label for="nama_barang">Items Name</label>
      <input id="nama_barang" type="text" 
     class="form-control" name="nama_barang" required="Harap Masukan" oninvalid="this.setCustomValidity('Enter User Name Here')"
     oninput="setCustomValidity('')">
     </div>
     <div class="form-group">
-      <label for="pwd">Home Store</label>
+      <label for="sel1">Home Store</label>
          <label for="sel1">(select one):</label>
       <select class="form-control" id="sel1" name="asal">
        @foreach($category as $data)
@@ -132,26 +132,26 @@ a {
       </select>
     </div>
       <div class="form-group">
-      <label for="email">Seller</label>
-      <input type="text" class="form-control" id="email" placeholder="Seller" name="penjual" required   oninvalid="this.setCustomValidity('Enter Seller Name Here')"
+      <label for="seller">Seller</label>
+      <input type="text" class="form-control" id="seller" placeholder="Seller" name="penjual" required   oninvalid="this.setCustomValidity('Enter Seller Name Here')"
       oninput="setCustomValidity('')">
     </div>
           <div class="form-group">
-      <label for="email">Price</label>
-      <input type="text" class="form-control" id="email" placeholder="Price" name="harga" required=""   oninvalid="this.setCustomValidity('Enter Price Here')"
+      <label for="price">Price</label>
+      <input type="text" class="form-control" id="price" placeholder="Price" name="harga" required=""   oninvalid="this.setCustomValidity('Enter Price Here')"
     oninput="setCustomValidity('')">
     </div>
     <div class="form-group">
-      <label for="pwd">Kondisi</label>
-         <label for="sel1">(select one):</label>
-      <select class="form-control" id="sel1" name="kondisi" required=""   oninvalid="this.setCustomValidity('Enter Condition Here')"
+      <label for="sel2">Kondisi</label>
+         <label for="sel2">(select one):</label>
+      <select class="form-control" id="sel2" name="kondisi" required=""   oninvalid="this.setCustomValidity('Enter Condition Here')"
         oninput="setCustomValidity('')">
         <option>New</option>
         <option>Former</option>
       </select>
       </div>
       <div class="form-group">
-      <label for="email">Desc</label>
+      <label for="desc">Desc</label>
       <textarea type="text" class="form-control" id="desc" placeholder="Desc" name="desc" required oninvalid="this.setCustomValidity('Enter Desc Here')"
                   oninput="setCustomValidity('')"></textarea>
          </div>
@@ -164,7 +164,7 @@ a {
   <div class="col-md-5">
       <div class="form-group">
           <div class="btn">
-        <label for="email">Photo Header</label>
+        <label for="photo_header">Photo Header</label>
               <input name="photo_header[]" id="photo_header" type="file" accept=".PNG, .JPEG, .JPG" class="form-control" required oninvalid="this.setCustomValidity('Select one Image')"
                 oninput="setCustomValidity('')"><center><p></p>
                 <img class="thumbnail" style="display: none;" src="" id="profile-img-tag" width="200px" /></center>
@@ -174,7 +174,7 @@ a {
 <div class="col-md-4">
       <div class="form-group">
             <div class="btn">
-          <label for="email">Photo Detail ( Max 3 Photo )</label>
+          <label for="sampul">Photo Detail ( Max 3 Photo )</label>
                 <input multiple="true" name="sampul[]" style="max-width: 350px" id="sampul" type="file" accept=".PNG, .JPEG, .JPG" class="form-control" required oninvalid="this.setCustomValidity('Select one Image')"
                   oninput="setCustomValidity('')">
                   <output id="list"></output>
@@ -208,11 +208,11 @@ a {
     });
 </script>
 <script>
-  function handleFileSelect(evt) {
+  function handleFileSelect(evt) {      
     var files = evt.target.files; // FileList object
 
     // Loop through the FileList and render image files as thumbnails.
-    for (var i = 0, f; f = files[i]; i++) {
+    for (var i = 0, f; f = files[i]; i++) {      
 
       // Only process image files.
       if (!f.type.match('image.*')) {
@@ -221,14 +221,16 @@ a {
 
       var reader = new FileReader();
 
+
       // Closure to capture the file information.
-      reader.onload = (function(theFile) {
+      reader.onload = (function(theFile) {        
         return function(e) {
           // Render thumbnail.
           var span = document.createElement('span');
-          span.innerHTML = ['<img class="thumb" src="', e.target.result,
+          span.innerHTML = ['<img id="hi-fiez" class="thumb" src="', e.target.result,
                             '" title="', escape(theFile.name), '"/>'].join('');
           document.getElementById('list').insertBefore(span, null);
+          document.getElementById("list").style.display = "block";
         };
       })(f);
 
@@ -245,18 +247,24 @@ a {
    document.getElementById('add').style.display = "block";   
    document.getElementById('btnadd').style.display = "none";
    document.getElementById('btncancel').style.display = "block";
+   document.getElementById("profile-img-tag").style.display = "none";   
+   document.getElementById("list").style.display = "none";
    window.location.href='#add';
 }
               function cancel() {
    document.getElementById('add').style.display = "none";   
    document.getElementById('btnadd').style.display = "block";
    document.getElementById('btncancel').style.display = "none";
-}
-
-           function cancel_href() {
-   document.getElementById('add').style.display = "none";   
-   document.getElementById('btnhref').style.display = "none";
-   document.getElementById('btncancelhref').style.display = "block";
+   document.getElementById("nama_barang").value = null;
+   document.getElementById("seller").value = null;
+   document.getElementById("price").value = null;
+   document.getElementById("desc").value = null;
+   document.getElementById("photo_header").value = null;
+   document.getElementById("sampul").value = null;   
+   $("#sel1").val($("#sel1 option:first").val());
+   $("#sel2").val($("#sel2 option:first").val());
+   document.getElementById("profile-img-tag").style.display = "block";
+   document.getElementById("list").style.display = "none"; 
 }
               </script>
 
