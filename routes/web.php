@@ -66,3 +66,5 @@ Route::post('/user/update/email','EmailController@update');
 Route::post('/user/update/password','EmailController@create');
 Route::get('/user/edit/{id}','ProfileController@edit');
 Route::post('/profile/update/','ProfileController@update');
+Route::get('/profile/delete/{id}','ProfileController@delete');
+Route::get('/user/delete/{id}','ProfileController@konfirmasi_delete');

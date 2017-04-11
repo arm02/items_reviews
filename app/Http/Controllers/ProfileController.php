@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Auth;
+use \App\User;
 
 class ProfileController extends Controller
 {
@@ -29,6 +30,18 @@ class ProfileController extends Controller
       if (!$data['user']){ abort(404); }
 		return view('auth.setting_profile')->with($data);
 
+    }
+    public function delete($id)
+    {
+        $data['user']=\App\User::find($id);
+         if (!$data['user']){ abort(404); }
+        return view('profile.konfirmasidelete')->with($data);
+    }
+
+    public function konfirmasi_delete($id)
+    {
+      User::whereId(Auth::user()->id)->delete();
+      return redirect(url('/login'));
     }
 
     public function update()

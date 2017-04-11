@@ -16,18 +16,19 @@
                                 <br>
                     <form action="/user/{{$user->id}}/edit">
                     <center>
-                        <button class="btn btn-primary">Setting Profile</button>
+                        <button class="btn btn-default" style="width: 200px;">Edit Your Profile</button>
                         </center>
                     </form> 
                     <p></p>
-                    <form action="#">
+                    <form action="{{url('profile/delete/'.$user->id)}}">
                     <center>
-                        <button class="btn btn-primary" onclick="return confirm('Are you sure to delete account {{$user->name}}?')">Delete Account</button>
+                        <button class="btn btn-default" style="width: 200px;" onclick="return confirm('Are you sure to delete account {{$user->name}}?')">Delete Account</button>
                         </center>
                     </form>       
                     </div>       
 				
-					<div class="col-sm-8">                                            <div class="panel-body">
+					<div class="col-sm-8"> 
+                    <div class="panel-body">
                                 <form accept-charset="UTF-8"><input name="_token" type="hidden" value="CrEus3qjiSftRHGjpdSlV9qdqIYSnEX3m7e8MQBx">
                                 <table class="table striped hovered dataTable">
                                     <tr style="background-color: #ff8a80" id="new" class="hide">

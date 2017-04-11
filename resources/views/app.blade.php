@@ -83,7 +83,6 @@
               </a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="/user/{{Auth::user()->id}}/profile"><span class="glyphicon glyphicon-user"></span> Profile</li>
-                  <li><a href="/user/{{Auth::user()->id}}/edit"><span class="glyphicon glyphicon-cog"></span> Setting</li>
                       <li><a href="/barang/list"><span class="glyphicon glyphicon-th-list"></span> YourReview</li>
                         <li role="separaator" class="divider"></li>
 
