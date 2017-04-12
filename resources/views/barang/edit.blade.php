@@ -6,9 +6,9 @@
                 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
         <style>
           .thumb {
-            height: 75px;
-            border: 1px solid #000;
-            margin: 10px 5px 0 0;
+            width: 200px;  
+            height: 117px;
+            /*margin: 10px 5px 0 0;*/
           }
         </style>
 
@@ -28,22 +28,14 @@
     class="form-control" name="nama_barang" value="{{$barang->nama_barang}}">
     </div>
 
-    <div class="form-group">
+ <div class="form-group">
       <label for="pwd">Home Store</label>
          <label for="sel1">(select one):</label>
-      <select class="form-control" id="sel1" name="asal" value="{{$barang->asal}}">
-        <option>{{$barang->asal}}</option>
-        <option>Tokopedia.com</option>
-        <option>Bukalapak.com</option>
-        <option>Lazada.co.id</option>
-        <option>Mataharimall.com</option>
-        <option>Blibli.com</option>
-        <option>Zalora.co.id</option>
-         <option>Kaskus.co.id</option>
-         <option>Bhinneka.com</option>
-        <option>Elevenia.co.id</option>
-        <option>www.blanja.com</option>
-          <option>Qoo10.co.id</option>
+      <select class="form-control" id="sel1" name="asal">
+       @foreach($category as $data)
+       <option value="{{ $data->nama_category }}">{{ $data->nama_category }}
+       </option>
+       @endforeach
       </select>
     </div>
 
@@ -59,7 +51,7 @@
 
     <div class="form-group">
       <label for="pwd">Condition</label>
-         <label for="sel1">(select one):</label>
+      <label for="sel1">(select one):</label>
       <select class="form-control" id="sel1" name="kondisi" value="{{$barang->kondisi}}">
        <option>{{$barang->kondisi}}</option>
         <option>New</option>
@@ -74,7 +66,7 @@
        <div class="form-group">
                <div class="col-md-4">
             <label for="email">Photo Header</label><p></p>
-         <img class="thumbnail" src="{{url('images/'.$barang->photo_header)}}" id="profile-img-tag" width="200px" />
+         <img class="thumb thumbnail" src="{{url('images/'.$barang->photo_header)}}" id="profile-img-tag" />
         <div class="right"><p>
           <div class="btn btn btn-default">
               <input name="sampul[]" id="photo_header" type="file">
@@ -83,21 +75,23 @@
       </div>
 
       <div class="form-group">
-        <label>Photo Detail</label><p></p>
+        <label for="sampul2">Photo Detail</label>
+        <div id="bahlul">
         <?php
             $cek = App\Image::where('id_barang', $barang->id)->get();
-          ?>
-        @foreach($cek as $value)
-        <img  style="width: 200px;" class ="thumbnail col-md-5" 
-        src = "{{ url('images/'.$value->lokasi_file) }}">
+          ?>          
+        @foreach($cek as $value)        
+        <img class ="thumb thumbnail col-md-5" 
+        src = "{{ url('images/'.$value->lokasi_file) }}">        
         @endforeach
-          <div class="btn btn-default col-md-4">
-              <input name="sampu2l[]" multiple="true" accept=".PNG, .JPEG, .JPG" id="sampul2" 
+        </div>                        
+        <output style="display: none;" id="list"></output> 
+        <!-- max-width: 421px; max-height: 100px; -->
+        <p><br></p>
+          <div class="btn btn-default col-md-4 center">
+              <input name="sampul2[]" multiple="true" accept=".PNG, .JPEG, .JPG" id="sampul2" 
               type="file">
           </div>
-      <div class="">
-        <output id="list" class="col-md-3 center"></output>
-        </div>
    </div>
    </div>
 
@@ -149,9 +143,12 @@
         return function(e) {
           // Render thumbnail.
           var span = document.createElement('span');
-          span.innerHTML = ['<img class="thumb" src="', e.target.result,
+          span.innerHTML = ['<img class="thumb thumbnail col-md-3" src="', e.target.result,
                             '" title="', escape(theFile.name), '"/>'].join('');
           document.getElementById('list').insertBefore(span, null);
+          document.getElementById('bahlul').style.display = "none";
+          document.getElementById('list').style.display = "block";
+          document.getElementById('listdiv').style.display = "block";
         };
       })(f);
 
@@ -160,8 +157,7 @@
     }
   }
 
-  document.getElementById('sampul2').addEventListener('change', handleFileSelect, false);
+  document.getElementById('sampul2').addEventListener('change', handleFileSelect, false);  
 </script>
  
 @endsection
-

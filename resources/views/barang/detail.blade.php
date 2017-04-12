@@ -9,6 +9,7 @@
 
         <!-- Include Cloud Zoom CSS. -->
         <link rel="stylesheet" type="text/css" href="../../zimage/cloudzoom.css" />
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 
         <!-- Include Cloud Zoom script. -->
         <script type="text/javascript" src="../../zimage/cloudzoom.js"></script>
@@ -19,6 +20,8 @@
         </script>
 
 <style type="text/css">
+.thumbnail {    
+}
     a, u {
     text-decoration: none;
 }
@@ -28,6 +31,7 @@ a {
 p {
     margin: 0;
     padding: 0;
+    clear: both;
 }
 .gambar
 {
@@ -80,20 +84,20 @@ p {
 <div class="row">
   <div class="col-md-14">
  <div class="col-md-12">
-    <div class="thumbnail btn-default">
+    <div class="thumbnail" style="border-radius: 0px;">
     <div class="col-md-12">
-    <div class="col-md-3">
+    <div class="col-md-2">
     <center>
     <p><br></p>
 
     <!-- test -->
 
-        <img  style="width: 50%; height: 50%;" class = 'cloudzoom-gallery' src = "{{url('images/'.$barang->photo_header)}}" data-cloudzoom = "useZoom: '.cloudzoom', image: '{{url('images/'.$barang->photo_header)}}', zoomImage: '{{url('images/'.$barang->photo_header)}}' "><p><br></p>
+        <img  style="width: 50%; height: 50%;" class = 'thumbnail cloudzoom-gallery' src = "{{url('images/'.$barang->photo_header)}}" data-cloudzoom = "useZoom: '.cloudzoom', image: '{{url('images/'.$barang->photo_header)}}', zoomImage: '{{url('images/'.$barang->photo_header)}}' ">
           <?php
             $cek = App\Image::where('id_barang', $barang->id)->get();
           ?>
           @foreach($cek as $value)
-    <img  style="width: 50%; height: 50%;" class = 'cloudzoom-gallery' src = "{{ url('images/'.$value->lokasi_file) }}" data-cloudzoom = "useZoom: '.cloudzoom', image: '{{ url('images/'.$value->lokasi_file) }}', zoomImage: '{{ url('images/'.$value->lokasi_file) }}' "><p><br></p>
+    <img  style="width: 50%; height: 50%;" class = 'thumbnail cloudzoom-gallery' src = "{{ url('images/'.$value->lokasi_file) }}" data-cloudzoom = "useZoom: '.cloudzoom', image: '{{ url('images/'.$value->lokasi_file) }}', zoomImage: '{{ url('images/'.$value->lokasi_file) }}' ">
         @endforeach
         </center>
         </div>
@@ -104,21 +108,22 @@ p {
     data-cloudzoom = "useZoom: '.cloudzoom', image: '{{url('images/'.$barang->photo_header)}}', zoomImage: '{{url('images/'.$barang->photo_header)}}'" />
     <p></p>   
 
+
           <p><br></p>          
-          </div>
-          <div class="col-md-4">
-          <h3><b>{{ $barang->nama_barang }}</b></h3>
-        <h5><font color="red">{{$barang->asal}}</font></h5>
-        <h2><b>Rp. {{$barang->harga}}</b></h2><br>
-        <h5><b><p>Seller : {{$barang->penjual}}</p></b></h5>
-        <p><b>Keadaan Barang : {{$barang->kondisi}}</b></p>
-        </div>
-          </div>
+          </div>                      
+          <div class="col-md-4 pull-left"><center>
+        <h1 style="text-transform: uppercase;"><b>{{ $barang->nama_barang }}</b></h1>
+        <h2><i class="icon-money"></i>&nbsp;<b>{{$barang->harga}}</b></h2><br>
+        <h3><font color="red"><span class="glyphicon glyphicon-globe"></span>&nbsp;{{$barang->asal}}</font></h3>        
+        <h4><b><p style="text-transform: capitalize;"><span class="glyphicon glyphicon-user"></span>&nbsp;{{$barang->penjual}}</p></b></h4><br>
+        <h5><p><b>Condition : {{$barang->kondisi}}</b></p></h5></center>
+        </div>        
+          </div>          
           
       <div class="caption">
-      <br>
+      <br>      
         <div align="left">
-        <p><br></p>
+        <p><br></p><hr>        
         <h3><b><p style="text-indent: 50px;">DESC</p></b></h3>        
         <p><br></p>
         <div class="thumbnail center" style="width: 90%;">
@@ -126,7 +131,7 @@ p {
         <p><br></p>
         <p style="white-space: pre-line;">{{ $barang->desc }}</p>
         <p><br></p>
-        </div>
+        </div>    
         </div>
         </div>        
         </div>               

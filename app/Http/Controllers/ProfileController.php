@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Auth;
 use \App\User;
+use \App\komentar;
+use \App\Barang;
+use \App\Image;
 
 class ProfileController extends Controller
 {
@@ -40,6 +43,10 @@ class ProfileController extends Controller
 
     public function konfirmasi_delete($id)
     {
+      
+      Barang::whereIdUser(Auth::user()->id)->delete();
+      komentar::whereIdUser(Auth::user()->id)->delete();
+      Image::whereIdUser(Auth::user()->id)->delete();
       User::whereId(Auth::user()->id)->delete();
       return redirect(url('/login'));
     }

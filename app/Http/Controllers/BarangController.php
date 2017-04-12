@@ -35,6 +35,7 @@ class BarangController extends Controller
         public function edit($id)
     {
       $data['barang']=\App\Barang::find($id);
+      $data['category']=\App\Category::paginate(16);
       $cek = Barang::orderby('id','desc')->first();
       $data['image']= Image::whereIdBarang($cek->id)->get();
       if (!$data['barang']){ return redirect(url('/barang/list')); }
@@ -109,10 +110,32 @@ class BarangController extends Controller
         $sampul_header = date("YmdHis").uniqid()."."
         .$sampul->getClientOriginalExtension();
         $sampul->move(storage_path('sampul'), $sampul_header);
+
       $a->photo_header = $sampul_header;
     }
   }
       $a->save();
+
+
+      if (Input::hasFile('sampul2')) {
+          $test = Barang::orderby('id','desc')->first();
+          Image::whereIdBarang($test->id)->delete();
+      $files = Input::file('sampul2');
+      foreach($files as $sampul) {
+        $sampul_cek = date("YmdHis").uniqid()."."
+        .$sampul->getClientOriginalExtension();
+
+        $sampul->move(storage_path('sampul'), $sampul_cek);
+        $cek = Barang::orderby('id','desc')->first();
+
+        Image::create([
+          'id_barang' => $cek->id,
+          'lokasi_file' => $sampul_cek,
+          'id_user' => Auth::user()->id
+          ]);
+
+    }
+  }
       return redirect(url('barang/list'));
 }
 
