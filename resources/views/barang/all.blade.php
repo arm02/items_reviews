@@ -28,6 +28,8 @@
   </form>
   @endsection
 
+  <!-- sadads -->
+
   @section('content')
 
   <script type="text/javascript">(function(d, t, e, m){
