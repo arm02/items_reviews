@@ -97,3 +97,7 @@
 
  
     @endsection
+
+      <script type="text/javascript">
+      document.title = "{{$user->name}}";      
+        </script>

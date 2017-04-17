@@ -80,3 +80,6 @@
         {!! $barang->render() !!}
         </div>
         @endsection
+    <script type="text/javascript">
+      document.title = "Review - Beranda";      
+        </script>
