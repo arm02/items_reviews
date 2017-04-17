@@ -42,7 +42,7 @@ class DetailController extends Controller
   {
     $data['barang'] = \App\Barang::paginate(16);
     $data['category'] = \App\Category::paginate(16);
-    return view('barang.all')->with($data);  
+    return view('barang.all')->with($data);
   }
 
 
