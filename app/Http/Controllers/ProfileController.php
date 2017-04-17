@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Auth;
+use Hash;
 use \App\User;
 use \App\komentar;
 use \App\Barang;
@@ -41,14 +42,18 @@ class ProfileController extends Controller
         return view('profile.konfirmasidelete')->with($data);
     }
 
-    public function konfirmasi_delete($id)
-    {
-      
-      Barang::whereIdUser(Auth::user()->id)->delete();
-      komentar::whereIdUser(Auth::user()->id)->delete();
-      Image::whereIdUser(Auth::user()->id)->delete();
-      User::whereId(Auth::user()->id)->delete();
-      return redirect(url('/login'));
+    public function konfirmasi_delete($id){
+        $a = \App\User::find($id);
+        if (Hash::check(Input::get('password'), $a['password'])) {
+          Barang::whereIdUser(Auth::user()->id)->delete();
+          komentar::whereIdUser(Auth::user()->id)->delete();
+          Image::whereIdUser(Auth::user()->id)->delete();
+          User::whereId(Auth::user()->id)->delete();
+          return redirect(url('login'));
+        }else {
+          return redirect('profile/delete/'. Auth::User()->id .'')->with('warning', 'Oops .. Password yang anda masukan tidak sesuai');
+        }
+
     }
 
     public function update()

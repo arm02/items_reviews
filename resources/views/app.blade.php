@@ -41,79 +41,96 @@
 <body>
 
 
-    <nav class="navbar navbar-default navbar-static-top">
-      <div class="container">
-        <div class="navbar-header">
+  <nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+      <div class="navbar-header">
 
-          <!-- Collapsed Hamburger -->
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-            <span class="sr-only">Toggle Navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+        <!-- Collapsed Hamburger -->
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+          <span class="sr-only">Toggle Navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
 
-          <!-- Branding Image -->
+        <!-- Branding Image -->
 
-          <a class="navbar-brand" href="{{ url('/') }}">
-            <span class="glyphicon glyphicon-sunglasses"></span> Review
-          </a>
-        </div>
+        <a class="navbar-brand" href="{{ url('/') }}">
+          <span class="glyphicon glyphicon-sunglasses"></span> Review
+        </a>
+      </div>
 
 
 
-        <div class="collapse navbar-collapse" id="app-navbar-collapse">
-          <!-- Left Side Of Navbar -->
-          <ul class="nav navbar-nav">
-            &nbsp;
+      <div class="collapse navbar-collapse" id="app-navbar-collapse">
+        <!-- Left Side Of Navbar -->
+        <ul class="nav navbar-nav">
+          &nbsp;
+
+        </ul>
+        <!-- Right Side Of Navbar -->
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="{{url('/barang/beranda')}}"><span class="glyphicon glyphicon-home">
+          </span>&nbsp;&nbsp;Beranda</li></a></b>
+
+          @if (!Request::is('/'))
+          <form action={{ url('search') }} method="GET" class="navbar-form navbar-left">
+            <div class="input-group">
+              <div class="input-group-btn">
+                <select class="btn btn-default" style="height: 34px;" name="category" required>
+                  <option value="all" class="btn btn-default">All Categories</option>
+                  @foreach(\App\Category::all() as $data)
+                  <option value="{{ $data->nama_category }}" class="btn btn-default">{{ $data->nama_category }}
+                  </option>
+                  @endforeach
+                </select>
+              </div>
+              <input type="text" name="views" class="form-control" value="" required placeholder="Search">
+            </div>
+          </form>
+          @endif
+
+          @if (Auth::guest())
+          <li><a href="{{ url('/login') }}"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Sign In</a></li>
+          <li><a href="{{ url('/register') }}"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;Sign Up</a></li>
+          @else
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              <img src="{{url('images/'.Auth::user()->sampul)}}" class="img-circle" width="20" height="20">&nbsp;&nbsp;{{ Auth::user()->name }}&nbsp;<span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/user/{{Auth::user()->id}}/profile"><span class="glyphicon glyphicon-user"></span> Profile</li>
+                <li><a href="/barang/list"><span class="glyphicon glyphicon-th-list"></span> YourReview</li>
+                  <li role="separaator" class="divider"></li>
+
+                  <li>
+                    <a href="{{ url('/logout') }}"
+                    onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                    <span class="glyphicon glyphicon-log-out"></span> Logout
+                  </a>
+
+                  <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                    {{ csrf_field() }}
+                  </form>
+
+                </li>
+              </ul>
+
+
+            </li>
+
+            @endif
 
           </ul>
-          <!-- Right Side Of Navbar -->
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="{{url('/barang/beranda')}}"><span class="glyphicon glyphicon-home">
-            </span>&nbsp;&nbsp;Beranda</li></a></b>
-            @yield('beranda')
-            @if (Auth::guest())
-            <li><a href="{{ url('/login') }}"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Sign In</a></li>
-            <li><a href="{{ url('/register') }}"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;&nbsp;Sign Up</a></li>
-            @else
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                <img src="{{url('images/'.Auth::user()->sampul)}}" class="img-circle" width="20" height="20">&nbsp;&nbsp;{{ Auth::user()->name }}&nbsp;<span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="/user/{{Auth::user()->id}}/profile"><span class="glyphicon glyphicon-user"></span> Profile</li>
-                      <li><a href="/barang/list"><span class="glyphicon glyphicon-th-list"></span> YourReview</li>
-                        <li role="separaator" class="divider"></li>
-
-                        <li>
-                          <a href="{{ url('/logout') }}"
-                          onclick="event.preventDefault();
-                          document.getElementById('logout-form').submit();">
-                          <span class="glyphicon glyphicon-log-out"></span> Logout
-                        </a>
-
-                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                          {{ csrf_field() }}
-                        </form>
-
-                      </li>
-                    </ul>
-
-
-                  </li>
-
-                  @endif
-
-                </ul>
-              </div>
-            </div>
-          </nav>
-
-          @yield('content')
         </div>
+      </div>
+    </nav>
 
-        <!-- Scripts -->
-        <script src="/js/app.js"></script>
-      </body>
-      </html>
+    @yield('content')
+  </div>
+
+  <!-- Scripts -->
+  <script src="/js/app.js"></script>
+</body>
+</html>

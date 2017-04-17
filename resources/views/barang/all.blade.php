@@ -11,25 +11,6 @@
   </style>
   @endsection
 
-  @section('beranda')
-  <form action="{{url('search')}}" method="GET" class="navbar-form navbar-left">
-    <div class="input-group">
-      <div class="input-group-btn">
-       <select class="btn btn-default" style="height: 34px;" name="category" required>
-       <option value="search" class="btn btn-default">All Categories</option>
-        @foreach($category as $data)
-          <option value="{{ $data->nama_category }}" class="btn btn-default">{{ $data->nama_category }}
-          </option>
-          @endforeach
-        </select>
-      </div>
-      <input type="text" name="views" class="form-control" value="" required placeholder="Search">
-    </div>
-  </form>
-  @endsection
-
-  <!-- sadads -->
-
   @section('content')
 
   <script type="text/javascript">(function(d, t, e, m){
@@ -80,7 +61,7 @@
         <hr>
         </div>
         <img class="www" style="height: 150px;" src="{{url('images/'.$data->photo_header)}}">
-        
+
         <div class="caption">
         <div class="rw-ui-container" align="right"></div>
         <h6><b>{{ $data->nama_barang }}</h6></b>
