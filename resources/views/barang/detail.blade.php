@@ -145,20 +145,22 @@ p {
   <div class="row">
 	<h3>Comment</h3>
 	<hr>
-	@foreach($komentar as $key)	
   <div class="card card-default">
   <div class="card-heading" style="height: 25px;">
+
+    @foreach($komentar as $key) 
     <h5><a href="/user/{{\App\User::find($key->id_user)['id']}}/profile">
-  	<img src="{{'images/'.App\User::find($key->id_user)['sampul']}}" 
-	class="img-circle" width="20" height="20">&nbsp;
-	<b>{{\App\User::find($key->id_user)['name']}}</b></a></h5>
-	</div>
+    <img src="{{'images/'.App\User::find($key->id_user)['sampul']}}" 
+    class="img-circle" width="20" height="20">&nbsp;
+    <b>{{\App\User::find($key->id_user)['name']}}</b></a></h5>
+    </div>
 	<div class="card-body card-info" style="height: auto;">
     <p style="white-space: pre-line;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$key->isi}}</p>	
     <h6 align="right"><div class="rw-ui-container"></div>&nbsp;&nbsp; at {{$key->created_at->format('D M, d Y \a\t h:i A')}}</h6>
-    	</div>
-    	</div>
-    	@endforeach		
+        @endforeach     
+        </div>
+        </div>
+
     <br>
     <label for="email">&nbsp;&nbsp;&nbsp;&nbsp;Write Comment</label><p></p>
 		<form method="POST" action="{{url('komentar')}}">

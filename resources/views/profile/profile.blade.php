@@ -14,6 +14,7 @@
                                 <br>
                                 <br>
                                 <br>
+                                
                     <form action="/user/{{$user->id}}/edit">
                     <center>
                         <button class="btn btn-default" style="width: 200px;">Edit Your Profile</button>

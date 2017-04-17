@@ -9,6 +9,7 @@ use App\Barang;
 use App\Image;
 use Illuminate\Support\Facades\Input;
 use Auth;
+use App\komentar;
 
 class BarangController extends Controller
 {
@@ -22,7 +23,7 @@ class BarangController extends Controller
       public function index()
     {
       $data['barang'] = \App\Barang::where('id_user',Auth::user()->id)->paginate(1000);
-       $data['category'] = \App\Category::paginate(16);
+      $data['category'] = \App\Category::paginate(16);
       return view('barang.list_barang')->with($data);
     }
 
@@ -161,7 +162,7 @@ class BarangController extends Controller
 
 
 
-         public function komentar()
+        public function komentar()
     {
         $a = new \App\komentar;
         $a->isi = Input::get('isi');
@@ -175,9 +176,8 @@ class BarangController extends Controller
     }
     public function hapuskomentar($id)
     {
-        $a = \App\komentar::find($id);
-        $key = \App\Barang::find($a->id_artikel);
-        $a->delete();
-        return redirect(url($key->slug));
+        $key = Barang::orderby('id','desc')->first();
+        komentar::whereIdUser(Auth::user()->id)->delete();
+        return  redirect(url('item-'.$key->id));
     }
 }
