@@ -149,7 +149,7 @@ p {
   <div class="card-heading" style="height: 25px;">
 
     @foreach($komentar as $key) 
-    <h5><a href="/user/{{\App\User::find($key->id_user)['id']}}/profile">
+    <h5><a href="/user/{{\App\User::find($key->id_user)['id']}}/people">
     <img src="{{'images/'.App\User::find($key->id_user)['sampul']}}" 
     class="img-circle" width="20" height="20">&nbsp;
     <b>{{\App\User::find($key->id_user)['name']}}</b></a></h5>
