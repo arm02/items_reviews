@@ -80,4 +80,11 @@ class ProfileController extends Controller
       $a->save();
       return redirect(url('user/'.Auth::user()->id. '/edit'));
     }
+
+    public function people_form($id)
+    {
+       $data['user']=\App\User::find($id);
+       if (!$data['user']){ abort(404); }
+      return view('profile.people_form')->with($data);
+    }
   }

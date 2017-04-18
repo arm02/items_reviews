@@ -57,7 +57,7 @@
         <div class="thumbnail">
         <div align="center">
         <h5><font color="red"> {{ $data->asal }}</h5></font>
-        <h6>Posted by <a href="" style="text-transform: capitalize;">{{\App\User::find($data->id_user)['name']}}</a></h6>
+        <h6>Posted by <a href="/user/{{\App\User::find($data->id_user)['id']}}/people" style="text-transform: capitalize;">{{\App\User::find($data->id_user)['name']}}</a></h6>
         <hr>
         </div>
         <img class="www" style="height: 150px;" src="{{url('images/'.$data->photo_header)}}">

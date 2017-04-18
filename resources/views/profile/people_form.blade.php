@@ -14,18 +14,7 @@
                                 <br>
                                 <br>
                                 <br>
-                            
-                    <form action="/user/{{$user->id}}/edit">
-                    <center>
-                        <button class="btn btn-default" style="width: 200px;">Edit Your Profile</button>
-                        </center>
-                    </form> 
-                    <p></p>
-                    <form action="{{url('profile/delete/'.$user->id)}}">
-                    <center>
-                        <button class="btn btn-default" style="width: 200px;" onclick="return confirm('Are you sure to delete account {{$user->name}}?')">Delete Account</button>
-                        </center>
-                    </form>      
+         
                     </div>       
 				<!-- dsasda -->
 					<div class="col-sm-8"> 
