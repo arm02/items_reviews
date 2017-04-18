@@ -126,7 +126,7 @@ p {
         <p><br></p><hr>        
         <h3><b><p style="text-indent: 50px;">DESC</p></b></h3>        
         <p><br></p>
-        <div class="thumbnail center" style="width: 90%;">
+        <div class="thumbnail center" style="width: 90%;"> 
         <div class="center" style="width: 95%;">
         <p><br></p>
         <p style="white-space: pre-line;">{{ $barang->desc }}</p>
