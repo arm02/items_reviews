@@ -13,7 +13,6 @@ class DetailController extends Controller
   {
     $data['barang'] = \App\Barang::find($id);
     if (!$data['barang']){ abort(404); }
-    $data['validasi'] = \App\komentar::whereIdUser(Auth::user()->id)->paginate(1000);
     $data['komentar']=\App\komentar::whereIdArtikel($data['barang']->id)->get();
     return view('barang.detail')->with($data);
   }
