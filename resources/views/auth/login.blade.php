@@ -66,3 +66,6 @@
     </div>
 </div>
 @endsection
+<script type="text/javascript">
+      document.title = "Review - Login";      
+        </script>

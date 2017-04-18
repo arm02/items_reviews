@@ -91,3 +91,7 @@
 
 @endif
 @endsection
+
+  <script type="text/javascript">
+      document.title = "Review - Pencarian {{$search}}";      
+        </script>

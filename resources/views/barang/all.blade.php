@@ -57,14 +57,14 @@
         <div class="thumbnail">
         <div align="center">
         <h5><font color="red"> {{ $data->asal }}</h5></font>
-        <h6>Posted by {{\App\User::find($data->id_user)['name']}}</h6>
+        <h6>Posted by <a href="" style="text-transform: capitalize;">{{\App\User::find($data->id_user)['name']}}</a></h6>
         <hr>
         </div>
         <img class="www" style="height: 150px;" src="{{url('images/'.$data->photo_header)}}">
 
         <div class="caption">
         <div class="rw-ui-container" align="right"></div>
-        <h6><b>{{ $data->nama_barang }}</h6></b>
+        <h6 style="text-transform: uppercase;"><b>{{ $data->nama_barang }}</h6></b>
         <h5>Rp.{{ $data->harga }} </h5>
         <br>
         <div align="center">
@@ -80,3 +80,6 @@
         {!! $barang->render() !!}
         </div>
         @endsection
+    <script type="text/javascript">
+      document.title = "Review - Beranda";      
+        </script>

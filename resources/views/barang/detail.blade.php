@@ -179,5 +179,7 @@ p {
 		</form>
     </div>    
     </div>
-		
+		<script type="text/javascript">
+      document.title = "Review - {{ $barang->nama_barang }}";      
+        </script>
 @endsection

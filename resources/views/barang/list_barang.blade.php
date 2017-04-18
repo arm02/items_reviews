@@ -248,7 +248,8 @@ a {
    document.getElementById('btnadd').style.display = "none";
    document.getElementById('btncancel').style.display = "block";
    document.getElementById("profile-img-tag").style.display = "none";   
-   document.getElementById("list").style.display = "none";
+   document.getElementById("list").style.display = "none";   
+   document.title = "Review - Add";
    window.location.href='#add';
 }
               function cancel() {
@@ -264,7 +265,8 @@ a {
    $("#sel1").val($("#sel1 option:first").val());
    $("#sel2").val($("#sel2 option:first").val());
    document.getElementById("profile-img-tag").style.display = "block";
-   document.getElementById("list").style.display = "none"; 
+   document.getElementById("list").style.display = "none";    
+   document.title = "Review";              
 }
               </script>
 
