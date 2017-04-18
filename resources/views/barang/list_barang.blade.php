@@ -131,11 +131,6 @@ a {
        @endforeach
       </select>
     </div>
-      <div class="form-group">
-      <label for="seller">Seller</label>
-      <input type="text" class="form-control" id="seller" placeholder="Seller" name="penjual" required   oninvalid="this.setCustomValidity('Enter Seller Name Here')"
-      oninput="setCustomValidity('')">
-    </div>
           <div class="form-group">
       <label for="price">Price</label>
       <input type="text" class="form-control" id="price" placeholder="Price" name="harga" required=""   oninvalid="this.setCustomValidity('Enter Price Here')"

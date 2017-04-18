@@ -60,7 +60,7 @@ class BarangController extends Controller
       'slug' => str_slug(Input::get('nama_barang')),
       'nama_barang' => Input::get('nama_barang'),
       'asal' => Input::get('asal'),
-      'penjual' => Input::get('penjual'),
+      'penjual' => Auth::user()->name,
       'desc' => Input::get('desc'),
       'harga' => Input::get('harga'),
       'kondisi' => Input::get('kondisi'),
