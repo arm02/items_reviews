@@ -131,6 +131,7 @@ a {
        @endforeach
       </select>
     </div>
+    <!-- ADSsda -->
           <div class="form-group">
       <label for="price">Price</label>
       <input type="text" class="form-control" id="price" placeholder="Price" name="harga" required=""   oninvalid="this.setCustomValidity('Enter Price Here')"
