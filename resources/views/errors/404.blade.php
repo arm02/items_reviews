@@ -3,7 +3,10 @@
 	<head>
 	<title>
 	Reviews Not Founds
-	</title>
+	</title>	
+	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 	<link type='text/css' rel='stylesheet' href='https://www.blogger.com/dyn-css/authorization.css?targetBlogID=6783106231603848715&amp;zx=e3301261-fb48-406b-809b-4ab1b329f5dd'/>
 	<style id='page-skin-1' type='text/css'><!--
@@ -32,7 +35,7 @@
 	fieldset, form, label, legend,
 	table, caption, tbody, tfoot, thead, tr, th, td, figure {    margin: 0;    padding: 0;}
 	html {   overflow-x: hidden;}
-	a {text-decoration:none;color:#000;}
+	a {text-decoration:none;color:#000; font-weight:bold;}
 	article,aside,details,figcaption,figure,
 	footer,header,hgroup,menu,nav,section {     display:block;}
 	table {    border-collapse: separate;    border-spacing: 0;}
@@ -48,6 +51,7 @@
 	::-webkit-selection {background:transparent; text-shadow:#000 0 0 2px;}
 	::-o-selection {background:transparent; text-shadow:#000 0 0 2px;}
 	a img{	border: none;}
+	a:hover {background:transparent; text-shadow:#000 0 0 2px; font-weight:normal;}		
 	ol, ul { padding:0;  margin:0;  text-align: left;  }
 	ol li { list-style-type: decimal;  padding:0 0 5px;  }
 	ul li { list-style-type: disc;  padding: 0 0 5px;  }
@@ -1942,11 +1946,16 @@
 	</div><p><br></p>
 	<div class='title-404'>404</div><p><br></p>
 	<div class='link-404'>
-	<a href='/'><span class='glyphicon glyphicon-road'></span>
-	<trans>Back to Home</trans></a>
+	<a style="text-decoration: none; cursor: pointer;" onclick="goBack()"><i class="fa fa-road" aria-hidden="true"></i>
+	<trans>Go Back</trans></a>
 	</div></div>
 	</div>
 	<style>.post-404{padding-top:40px;padding-bottom:60px;}.actions-404{width:100%;float:right;text-align:center;}.ops-404{width:50%;margin:0 auto;font-size:26px;font-weight:400;font-family:Oswald,sans-serif;letter-spacing:1.5px;}.ops-404 span{font-weight:700;}.title-404{font-size:200px;font-weight:700;line-height:1.1;color:$maincolor;}.link-404{font-size:18px;padding-top:20px;padding-bottom:50px;}#blog-pager,#sidebar-wrapper,.status-msg-wrap{display:none;}.status-msg-border{border:0!important;}.status-msg-bg{background-color:#fff;}#main-wrapper{float:none;width:100%;max-width:100%;}#headerleft{display:inline-block;float:none;}.headerleft-wrap{float:none;margin:0;padding:0;max-width:100%;display:block;text-align:center;}#header-wrapper img{height:70px;}.qitem{width:126px;height:126px;border:4px solid #222;margin:5px 5px 5px 0;background:url('bg.gif') no-repeat;overflow:hidden;position:relative;float:left;cursor:hand;cursor:pointer;}.qitem img{border:0;}.qitem .caption{position:absolute;z-index:0;color:#ccc;display:block;}.qitem .caption h4{font-size:12px;padding:10px 5px 0 8px;margin:0;color:#369ead;}.qitem .caption p{font-size:10px;padding:3px 5px 0 8px;margin:0;}.topLeft,.topRight,.bottomLeft,.bottomRight{position:absolute;background-repeat:no-repeat;z-index:200;}.topLeft{background-position:top left;}.topRight{background-position:top right;}.bottomLeft{background-position:bottom left;}.bottomRight{background-position:bottom right;}.clear{clear:both;}</style>
 	</div>
 	</body>
+	<script type="text/javascript">
+		function goBack() {
+    window.history.back();
+}
+	</script>
 	</html>
