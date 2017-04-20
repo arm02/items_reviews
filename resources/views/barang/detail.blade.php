@@ -20,6 +20,10 @@
         </script>
 
 <style type="text/css">
+::selection {background:transparent; text-shadow:#000 0 0 2px;}
+::-moz-selection {background:transparent; text-shadow:#000 0 0 2px;}
+::-webkit-selection {background:transparent; text-shadow:#000 0 0 2px;}
+::-o-selection {background:transparent; text-shadow:#000 0 0 2px;}
 .thumbnail {    
 }
     a, u {
@@ -145,21 +149,22 @@ p {
   <div class="row">
 	<h3>Comment</h3>
 	<hr>
-  <div class="card card-default">
-  <div class="card-heading" style="height: 25px;">
-
-    @foreach($komentar as $key) 
+  
+    @foreach($komentar as $indexKey => $key) 
+    <div class="all" id="{{$indexKey}}">    
+    <div class="card-heading" style="height: 25px;">
     <h5><a href="/user/{{\App\User::find($key->id_user)['id']}}/people">
     <img src="{{'images/'.App\User::find($key->id_user)['sampul']}}" 
     class="img-circle" width="20" height="20">&nbsp;
     <b>{{\App\User::find($key->id_user)['name']}}</b></a></h5>
     </div>
 	<div class="card-body card-info" style="height: auto;">
-    <p style="white-space: pre-line;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$key->isi}}</p>	
-    <h6 align="right"><div class="rw-ui-container"></div>&nbsp;&nbsp; at {{$key->created_at->format('D M, d Y \a\t h:i A')}}</h6>
-        @endforeach     
-        </div>
-        </div>
+    <p id="desc" style="white-space: pre-line;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{$key->isi}}</p>	
+    <h6 align="right"><div class="rw-ui-container"></div>&nbsp;&nbsp; at {{$key->created_at->format('D M, d Y \a\t h:i A')}}</h6>  
+    </div>
+    </div>
+    @endforeach        
+    <center><a id="btnall" onclick="ea()"><button class="btn btn-primary">See all comments</button></a></center>
 
     <br>
     <label for="email">&nbsp;&nbsp;&nbsp;&nbsp;Write Comment</label><p></p>
@@ -179,7 +184,18 @@ p {
 		</form>
     </div>    
     </div>
-		<script type="text/javascript">
-      document.title = "Review - {{ $barang->nama_barang }}";      
+		<script type="text/javascript">            
+      document.title = "Review - {{ $barang->nama_barang }}"; 
+      var i;
+      for (i = 4; i < 999; i++) {
+        document.getElementById(i).style.display = "none";
+      }        
+      function ea() {
+      var elements = document.getElementsByClassName('all');
+        for(var i=0; i<elements.length; i++) { 
+          elements[i].style.display = "block";
+        }      
+        document.getElementById('btnall').style.display = "none";          
+      }
         </script>
 @endsection
