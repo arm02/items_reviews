@@ -1,36 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<style type="text/css">
-.center {
-  margin: auto;
-  width: 50%;
-  padding: 10px;}
-  </style>
+  <style type="text/css">
+    .www {
+      height: 50%;
+    }
+    .center {
+      margin: auto;
+      width: 50%;
+      padding: 10px;}
+    </style>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="icon" href="images/icon.png"/>
-  <title>Review</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="images/icon.png"/>
+    <title>Review</title>
 
-  <!-- Bootstrap core CSS -->
-  <link href="../../csss/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="../../csss/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-  <link href="../../csss/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../../csss/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
-  <!-- Custom styles for this template -->
-  <link href="dashboard.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="dashboard.css" rel="stylesheet">
 
-  <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-  <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-  <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -71,7 +74,7 @@
         <!-- Right Side Of Navbar -->
         <ul class="nav navbar-nav navbar-right">
           <li><a href="{{url('/barang/beranda')}}"><span class="glyphicon glyphicon-home">
-          </span>&nbsp;&nbsp;Beranda</li></a></b>
+          </span>&nbsp;&nbsp;<b>Beranda</b></a></li>
 
           @if (!Request::is('/'))
           <form action={{ url('search') }} method="GET" class="navbar-form navbar-left">
@@ -99,38 +102,38 @@
               <img src="{{url('images/'.Auth::user()->sampul)}}" class="img-circle" width="20" height="20">&nbsp;&nbsp;{{ Auth::user()->name }}&nbsp;<span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="/user/{{Auth::user()->id}}/profile"><span class="glyphicon glyphicon-user"></span> Profile</li>
-                <li><a href="/barang/list"><span class="glyphicon glyphicon-th-list"></span> YourReview</li>
-                  <li role="separaator" class="divider"></li>
+              <li><a href="/user/{{Auth::user()->id}}/profile"><span class="glyphicon glyphicon-user"></span></a> Profile</li>
+              <li><a href="/barang/list"><span class="glyphicon glyphicon-th-list"></span></a>YourReview</li>
+              <li role="separaator" class="divider"></li>
 
-                  <li>
-                    <a href="{{ url('/logout') }}"
-                    onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">
-                    <span class="glyphicon glyphicon-log-out"></span> Logout
-                  </a>
+              <li>
+                <a href="{{ url('/logout') }}"
+                onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">
+                <span class="glyphicon glyphicon-log-out"></span> Logout
+              </a>
 
-                  <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                    {{ csrf_field() }}
-                  </form>
-
-                </li>
-              </ul>
-
+              <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+              </form>
 
             </li>
-
-            @endif
-
           </ul>
-        </div>
-      </div>
-    </nav>
 
-    @yield('content')
+
+        </li>
+
+        @endif
+
+      </ul>
+    </div>
   </div>
+</nav>        
 
-  <!-- Scripts -->
-  <script src="/js/app.js"></script>
+@yield('content')        
+
+<!-- Scripts -->
+<script src="/js/app.js"></script>
+
 </body>
 </html>
