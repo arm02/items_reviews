@@ -3,15 +3,16 @@
 @section('header')
 
 <title>Laravel &raquo; Home</title>
+<link rel="icon" href="{{url('images/'.$user->sampul)}}"/>
 
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 <style>
-.thumb {
-  height: 200px;
-  border: 1px solid #000;
-  margin: 10px 5px 0 0;
-}
+  .thumb {
+    height: 200px;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+  }
 </style>
 
 @endsection
@@ -114,8 +115,10 @@ enctype="multipart/form-data">
   <div class="form-group required">
     <label class="col-md-4 control-label" for="AccountFee">Phone Number</label>
     <div class="col-md-5">
-      <input id="no_telp" name="no_telp" type="text" placeholder="62+" class="form-control input-md" value="{{Auth::user()->no_telp}}" required>
-
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon1">+62</span>
+        <input id="no_telp" name="no_telp" type="text" placeholder="eg. 123456789" class="form-control input-md creditCardText" value="{{Auth::user()->no_telp}}" required>        
+      </div>
     </div>
   </div>
 
@@ -155,26 +158,54 @@ enctype="multipart/form-data">
 </form>
 
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript">
-function readURL(input) {
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
-
-    reader.onload = function (e) {
-      $('#profile-img-tag').attr('src', e.target.result);
+  function format(input, format, sep) {
+    var output = "";
+    var idx = 0;
+    for (var i = 0; i < format.length && idx < input.length; i++) {
+        output += input.substr(idx, format[i]);
+        if (idx + format[i] < input.length) output += sep;
+        idx += format[i];
     }
-    reader.readAsDataURL(input.files[0]);
-    document.getElementById('profile-img-tag').style.display = "block";
 
-  }
+    output += input.substr(idx);
+
+    return output;
 }
-$("#sampul").change(function(){
-  readURL(this);
+
+$('.creditCardText').keyup(function() {
+    var foo = $(this).val().replace(/-/g, ""); // remove hyphens
+    // You may want to remove all non-digits here
+    // var foo = $(this).val().replace(/\D/g, "");
+
+    if (foo.length > 0) {
+        foo = format(foo, [4, 4, 4, 4, 4], "-");
+    }
+  
+    
+    $(this).val(foo);
 });
 </script>
+<script type="text/javascript">
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $('#profile-img-tag').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+      document.getElementById('profile-img-tag').style.display = "block";
+
+    }
+  }
+  $("#sampul").change(function(){
+    readURL(this);
+  });
+</script>
 <script>
-function handleFileSelect(evt) {
+  function handleFileSelect(evt) {
   var files = evt.target.files; // FileList object
 
   // Loop through the FileList and render image files as thumbnails.

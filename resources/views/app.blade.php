@@ -102,8 +102,8 @@
               <img src="{{url('images/'.Auth::user()->sampul)}}" class="img-circle" width="20" height="20">&nbsp;&nbsp;{{ Auth::user()->name }}&nbsp;<span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
-              <li><a href="/user/{{Auth::user()->id}}/profile"><span class="glyphicon glyphicon-user"></span></a> Profile</li>
-              <li><a href="/barang/list"><span class="glyphicon glyphicon-th-list"></span></a>YourReview</li>
+              <li><a href="/user/{{Auth::user()->id}}/profile"><span class="glyphicon glyphicon-user"></span>&nbsp;Profile</a></li>
+              <li><a href="/barang/list"><span class="glyphicon glyphicon-th-list"></span>&nbsp;YourReview</a></li>
               <li role="separaator" class="divider"></li>
 
               <li>

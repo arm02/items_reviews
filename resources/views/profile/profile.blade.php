@@ -3,6 +3,7 @@
     @section('header')
 
         <title>Add&raquo; Items</title>
+        <link rel="icon" href="{{url('images/'.$user->sampul)}}"/>
 
     @endsection
 
@@ -82,7 +83,7 @@
                                     <tr>
                                         <td><label for="nis">No. Telp</label></td>
                                         <td> : </td>
-                                        <td>{{$user->no_telp}}</td>
+                                        <td>+62&nbsp;{{$user->no_telp}}</td>
                                     </tr>
                                     <tr>
                                         <td><label for="nis">Information</label></td>
